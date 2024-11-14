@@ -151,9 +151,8 @@ body {
 /* End CSS Navbar */
 
 /* Bagian Hero */
-
 .hero {
-  background-image: url('images/Istock.png'); /* Make sure the path is correct */
+  background-image: url('/static/main/images/Istock.png'); /* Make sure the path is correct */
   background-size: cover; /* Make the background image cover the entire section */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
