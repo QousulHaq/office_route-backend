@@ -38,7 +38,15 @@
     <div class="container">
       <h2>Our Services</h2>
       <div class="services-container row justify-content-center">
-        <!-- digenerate pakai dynamic-card.js -->
+        {% for data_service in service %}
+        <div class="col-md-4 mb-4">
+          <div class="service-card text-center h-100">
+            <img src="{{data_service.icon.url}}" alt="Video Learning" class="service-icon" />
+            <h3>{{data_service.title}}</h3>
+            <p>{{data_service.description}}</p>
+          </div>
+        </div>
+        {% endfor %}
       </div>
     </div>
   </section>

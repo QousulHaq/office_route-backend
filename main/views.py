@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from main.models import Course
+from main.models import Course, Service
 
 # Create your views here.
 def about(request):
@@ -8,7 +8,8 @@ def about(request):
 
 def index(request):
     course_data = Course.objects.all()
-    return render(request, 'main/index.html', context={"course" : course_data})
+    service_data = Service.objects.all()
+    return render(request, 'main/index.html', context={"course" : course_data, "service" : service_data})
 
 def signup(request):
     return render(request, 'main/signup.html')
