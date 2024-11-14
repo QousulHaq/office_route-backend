@@ -1,0 +1,778 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+/*CSS untuk Navbar*/
+
+/* Gaya untuk mengubah navbar */
+.navbar {
+  background-color: #1e3a8a;
+  /* Warna background navbar */
+  padding: 20px 50px;
+  /* Padding navbar */
+}
+
+/* Gaya untuk mengubah logo */
+.navbar-brand img {
+  width: 80px;
+  /* Lebar logo */
+}
+
+/* Gaya untuk navmenu */
+.nav-link {
+  color: white !important;
+  /* Warna teks navmenu */
+  font-weight: bold;
+  /* Teks tebal */
+  margin: 0 15px;
+  /* Jarak antar navmenu yang bisa diubah */
+}
+
+/* Mengatur navmenu agar berada di tengah */
+.navbar-nav {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Styling navbar links */
+.navbar-nav .nav-link {
+  font-weight: normal; /* Default weight for menu items */
+  color: #000;
+  transition: font-weight 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect to bold and change color */
+.navbar-nav .nav-link:hover {
+  font-weight: bold; /* Bold on hover */
+  color: #007bff; /* Change to blue on hover */
+}
+
+/* Make active menu items bold */
+.navbar-nav .nav-link.active {
+  font-weight: bold; /* Keep active link bold */
+  color: #007bff; /* Active color */
+}
+
+/* Custom button styling */
+.btn-signin,
+.btn-signup {
+  margin-left: 10px;
+  padding: 8px 15px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Gaya untuk tombol Sign In */
+.btn-signin {
+  background-color: white;
+  color: #1e3a8a;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+/* Gaya untuk tombol Sign Up */
+.btn-signup {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+/* Hover untuk tombol Sign In menggunakan gaya tombol Sign Up */
+.btn-signin:hover {
+  background-color: #206cbd;
+  /* Warna latar belakang saat hover */
+  color: white;
+  /* Warna teks saat hover */
+}
+
+/* Hover untuk tombol Sign Up menggunakan gaya tombol Sign In */
+.btn-signup:hover {
+  background-color: #206cbd;
+  /* Warna latar belakang saat hover */
+  color: white;
+  /* Warna teks saat hover */
+}
+
+.form-group {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 70%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+}
+
+/* Jarak antara tombol Sign In dan Sign Up */
+.btn-container {
+  display: flex;
+  gap: 15px;
+  /* Jarak antara kedua tombol yang bisa diubah */
+}
+
+/* Gaya untuk dropdown menu */
+.dropdown-menu {
+  background-color: #206cbd;
+  /* Warna background dropdown */
+}
+
+/* Gaya untuk item di dropdown */
+.dropdown-item {
+  color: white;
+  /* Warna teks di dropdown */
+}
+
+/* Gaya hover untuk item di dropdown */
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Efek hover */
+}
+
+/* Gaya untuk grid container */
+.grid-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  /* Tambahkan margin bawah untuk memberi jarak dengan footer */
+}
+/* End CSS Navbar */
+
+/* Bagian Hero */
+
+.hero {
+  background-image: url('images/Istock.png'); /* Make sure the path is correct */
+  background-size: cover; /* Make the background image cover the entire section */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  height: 500px; /* Adjust the height as needed */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  padding: 20px; /* Add padding for spacing */
+  color: #fff; /* Make text white for visibility */
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better text readability */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 50%; /* Make the text content take up half the width */
+}
+
+.hero-text {
+  text-align: left; /* Align the text to the left */
+  
+}
+.hero-text h1, 
+.hero-text p {
+  color: #ffffff; /* Sets the text color to white */
+
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+}
+
+
+
+/* Judul (Heading) */
+h1 {
+  font-weight: bold;
+  /* Membuat judul utama menjadi tebal */
+  color: #003399;
+  /* Mengatur warna biru untuk judul */
+}
+
+.service-card p {
+  font-size: 1.1rem;
+  /* Meningkatkan ukuran font sedikit untuk keterbacaan */
+  color: #5a5a5a;
+  /* Mengatur warna abu-abu medium untuk paragraf */
+}
+
+/* Pengaturan Kartu Layanan (Service Card) */
+.service-card {
+  border: 1px solid #e0e0e0;
+  /* Menambahkan batasan yang ringan di sekitar kartu layanan */
+  border-radius: 10px;
+  /* Membulatkan sudut-sudut kartu */
+  padding: 20px;
+  /* Menambahkan padding di dalam kartu */
+  transition: transform 0.3s ease;
+  /* Efek transisi saat hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Menambahkan bayangan halus pada kartu */
+}
+
+/* Efek Hover pada Kartu Layanan */
+.service-card:hover {
+  transform: translateY(-10px);
+  /* Menggerakkan kartu sedikit ke atas saat hover */
+}
+.course-card {
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  background-color: #f8f9fa; /* Warna awal background card */
+}
+
+.course-card:hover {
+  background-color: #d8dadf !important; /* Warna soft blue saat hover */
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Pengaturan Ikon di Kartu Layanan */
+.service-icon {
+  width: 70px;
+  /* Mengatur ukuran ikon layanan agar seragam */
+  margin-bottom: 15px;
+  /* Menambahkan jarak di bawah ikon */
+}
+
+/* Judul untuk Bagian Layanan */
+h3 {
+  color: #073790;
+  /* Mengatur warna biru gelap untuk judul layanan */
+  font-weight: bold;
+  /* Membuat judul layanan menjadi tebal */
+}
+
+/* Bagian Layanan (Services) */
+.services {
+  padding-top: 40px;
+  /* Menambahkan padding di bagian atas section layanan */
+  padding-bottom: 40px;
+  /* Menambahkan padding di bagian bawah section layanan */
+}
+
+.services h2 {
+  font-weight: bold;
+  /* Membuat judul layanan menjadi tebal */
+  text-align: center;
+  /* Mengatur posisi judul agar berada di tengah */
+  color: #073790;
+  /* Mengatur warna biru gelap untuk judul */
+  margin-bottom: 40px;
+  /* Menambahkan jarak di bawah judul layanan */
+}
+
+/* Gaya untuk courses-section */
+
+.courses-section h2 {
+  color: #073790;
+  /* Mengatur warna biru gelap untuk judul */
+}
+
+.courses-section {
+  margin-bottom: 1rem;
+  /* Menambahkan jarak di bawah judul layanan */
+}
+
+.course-card {
+  width: 300px;
+}
+
+/* Gaya untuk card title */
+.card-title {
+  color: #1e3a8a;
+  /* Ubah warna judul */
+}
+
+/* Gaya untuk footer */
+footer {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* Untuk ikon media sosial */
+.social-icons a {
+  color: white;
+  font-size: 24px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* Untuk garis pembatas */
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+/* Untuk ikon media sosial */
+.social-icons a {
+  color: white;
+  font-size: 24px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* Untuk garis pembatas */
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+/* Bagian footer sosial untuk pengaturan margin bawah */
+.footer-social {
+  margin-bottom: 20px;
+}
+
+/* Gaya untuk tautan media sosial dalam footer */
+.footer-social a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+/* Gaya untuk gambar ikon media sosial dalam footer */
+.footer-social img {
+  width: 30px;
+}
+
+/* Bagian bawah footer, termasuk warna latar belakang dan padding */
+.footer-bottom {
+  background-color: #0d1a56;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+/* Responsif untuk footer agar tata letak berubah pada perangkat dengan lebar maksimal 768px */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Mengatur elemen footer agar tersusun secara vertikal */
+    text-align: center; /* Teks di footer diatur agar berada di tengah */
+  }
+}
+
+/* Mengatur padding di bagian section footer */
+.footer-section {
+  padding: 0;
+}
+
+/* ============= About Us ============= */
+
+/* Container for the About Us section */
+.container-about {
+  display: flex;
+  flex-direction: row; /* Memastikan layout dalam bentuk baris */
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap; /* Membuat elemen bisa teratur ulang jika layar terlalu kecil */
+}
+
+/* Styling untuk judul About Us */
+.about-title {
+  color: #1E3A8A;
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+/* Styling untuk paragraph About Us */
+.about-paragraph {
+  color: #333;
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: justify;
+  max-width: 500px; /* Membatasi lebar teks agar tidak terlalu panjang */
+}
+
+/* Styling untuk gambar About Us */
+.about-image img {
+  max-width: 100%; /* Membuat gambar responsif */
+  height: auto; /* Mempertahankan aspek rasio gambar */
+  border-radius: 15px; /* Sudut melengkung untuk gambar */
+}
+
+
+
+.container-about {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.box {
+  margin-right: 20px;
+}
+
+.logo {
+  max-width: 100%;
+  width: 250px;
+  height: auto;
+}
+
+.content {
+  max-width: 600px;
+}
+
+.about-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-paragraph {
+  background-color: #f8f9fa; /* Warna latar belakang kotak */
+  padding: 20px;
+  border-radius: 8px; /* Membuat sudut kotak menjadi bulat */
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan */
+}
+
+@media (max-width: 768px) {
+  /* Membuat layout responsif pada layar kecil */
+  .container-about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .box {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .about-paragraph {
+    font-size: 1rem;
+  }
+}
+
+
+/* Gaya untuk item dalam daftar grup */
+.list-group-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+/* Gaya untuk saat pointer di atas item daftar */
+.list-group-item:hover {
+  background-color: #a8b1bb;
+  transition: background-color 0.3s;
+}
+
+/* Gaya untuk elemen heading (h2) */
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  /* margin-top: 220px;  */
+}
+
+/* Tambahan responsif untuk mobile */
+@media (max-width: 768px) {
+  .container-about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-paragraph {
+    text-align: center; /* Paragraf menjadi rata tengah di layar kecil */
+  }
+}
+
+/* Office Route Achievements */
+.achievement-card {
+  border-radius: 10px; /* Menambahkan sudut melingkar pada card */
+  background-color: #ffffff; /* Mengatur warna latar belakang card menjadi putih */
+  width: 300px; /* Mengatur lebar card menjadi 300 piksel */
+  transition: transform 0.3s ease; /* Menambahkan efek transisi pada perubahan transformasi */
+}
+
+.card-left {
+  transform: translateY(-20px); /* Mengangkat card kiri sejauh 20 piksel ke atas */
+}
+
+.card-right {
+  transform: translateY(-20px); /* Mengangkat card kanan sejauh 20 piksel ke atas */
+}
+
+.card-center {
+  transform: translateY(10px); /* Menurunkan card tengah sejauh 10 piksel ke bawah */
+}
+
+.achievement-card:hover {
+  transform: translateY(-10px); /* Mengangkat card saat kursor diarahkan ke atasnya */
+}
+
+.achievement-card img {
+  display: block; /* Mengatur gambar agar ditampilkan sebagai blok */
+  margin: 0 auto; /* Mengatur margin otomatis agar gambar terpusat */
+}
+
+h3 {
+  color: #1E3A8A; /* Mengatur warna teks untuk judul menjadi biru gelap */
+  font-weight: bold; /* Mengatur ketebalan font untuk judul menjadi bold */
+}
+
+p {
+  color: #666; /* Mengatur warna teks untuk paragraf menjadi abu-abu */
+  font-size: 0.95rem; /* Mengatur ukuran font untuk paragraf */
+}
+
+
+/* Our Partnership */
+.container {
+  margin: auto;
+  text-align: center;
+}
+
+.partnership-slider {
+  display: flex;
+  flex-direction: column; /* Stack rows vertically */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.partnership-content {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of items to next line */
+  transition: transform 1s ease-in-out; /* Set animation speed */
+}
+
+.partnership-row {
+  display: flex; /* Horizontal layout for rows */
+  width: 100%; /* Set to 100% for full width */
+}
+
+.partnership-item {
+  flex: 0 0 16.66%; /* Set each item to occupy 1/6 of the row (100% / 6) */
+  padding: 20px;
+  margin: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query to adjust layout on smaller screens */
+@media (max-width: 600px) {
+  .partnership-item {
+      flex: 1 0 100%; /* Each item takes full width on smaller screens */
+  }
+}
+
+
+
+/*Sign Up*/
+
+.container-signup {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.form-container-signup {
+  background-color: #ffffff;
+  padding: 33px;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  width: 100%;
+  margin-right: 20px;
+}
+/* login */
+body {
+  background-color: #f8f9fa; /* Light background color */
+  font-family: "Roboto", sans-serif;
+}
+
+.container-login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  width: 100%;
+  margin-right: 20px; /* Add space between form and logo */
+}
+
+h1 {
+  font-weight: 700;
+  color: #1e3a8a;
+  text-align: left; /* Align heading to the left */
+}
+
+p {
+  color: #6c757d;
+  text-align: left; /* Align paragraph to the left */
+}
+
+.forgot-password {
+  display: block;
+  margin: 10px 0;
+  color: #2b7cd3;
+  text-align: right;
+}
+
+.btn-primary {
+  background-color: #1e3a8a; /* Bootstrap primary color */
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #061c5a; /* Darker blue on hover */
+}
+
+.social-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-icon {
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.password-container {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 70%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+}
+
+.social-icon.google {
+  background-color: white; /* White background */
+  border: 2px solid #1e3a8a; /* Blue border */
+  color: #1e3a8a; /* Blue text */
+}
+
+.social-icon.facebook {
+  background-color: #1e3a8a; /* Facebook color */
+}
+
+.social-icon:hover {
+  opacity: 0.8;
+  color: #007bff;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e3a8a; /* Match with the form button */
+  border-radius: 0 15px 15px 0; /* Rounded corners on the right */
+}
+
+.logo-container img {
+  width: 250px; /* Adjust logo size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.row {
+  width: 100%; /* Ensure full width for the row */
+}
+
+/* Css Accordion */
+.accordion-header {
+  margin-top: 0px;
+}
+
+.accordion-item {
+  margin-bottom: 2.5em; /* Menghapus margin antar accordion item */
+}
+.accordion-button {
+  border: none; /* Menghilangkan border default untuk tombol */
+}
+.accordion-button:not(.collapsed) {
+  color: white;
+  background-color: #1e3a8a;
+}
+
+/* Styling untuk Back to Top button*/
+#backToTop {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 100;
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Untuk membuat bentuk lingkaran (circles) */
+  width: 50px; /* Mengatur ukuran lebar (width) */
+  height: 50px; /* Mengatur ukuran tinggi (height) */
+  display: flex; /* Flexbox untuk menengahkan icon */
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+#backToTop:hover {
+  background-color: #1a2e6e; 
+}
+
+#backToTop i {
+  font-size: 1.5rem;
+}
+
+.map-container {
+  max-width: 800px; 
+  margin: 0 auto;
+  padding: 0 15px; 
+}
+
+.map-container h2 {
+  text-align: center; 
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 350px; 
+  border-radius: 8px; 
+}
+
+@media (max-width: 768px) {
+  .map-container iframe {
+    height: 300px; 
+  }
+}
+
+@media (max-width: 576px) {
+  .map-container iframe {
+    height: 250px; 
+  }
+}

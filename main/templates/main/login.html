@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    {% include 'includes/navbar.html' %}
+    <!-- End Navbar -->
+
+    <div class="container-login">
+      <div class="row w-100">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <div class="form-container">
+            <h1>Welcome to Sign In</h1>
+            <p>Please fill in the below details to login to your account</p>
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter Email"
+                  required
+                />
+              </div>
+              <div class="password-container">
+                <label for="email">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  placeholder="Password"
+                /><i class="bi bi-eye eye-icon" id="togglePassword"></i>
+              </div>
+              <a href="#" class="forgot-password">Forgot Password?</a>
+              <button type="submit" class="btn btn-primary btn-block">
+                Sign In
+              </button>
+            </form>
+            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            <div class="social-login">
+              <a
+                href="https://www.google.com"
+                target="_blank"
+                class="social-icon google"
+              >
+                <i class="bi bi-google" style="margin-right: 8px"></i> Google
+              </a>
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                class="social-icon facebook"
+              >
+                <i class="bi bi-facebook" style="margin-right: 8px"></i>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 logo-container">
+          <img src="{% static 'main/images/LogoOR.png' %}" alt="Office Route Logo" />
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'main/js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- footer -->
+    {% include 'includes/footer.html' %}
+  </body>
+</html>
