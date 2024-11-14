@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from main.models import Course
 
 # Create your views here.
 def about(request):
     return render(request, 'main/about.html')
 
 def index(request):
-    return render(request, 'main/index.html')
+    course_data = Course.objects.all()
+    return render(request, 'main/index.html', context={"course" : course_data})
 
 def signup(request):
     return render(request, 'main/signup.html')
