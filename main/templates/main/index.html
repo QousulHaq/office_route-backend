@@ -3,6 +3,7 @@
 
 <head>
   {% load static %}
+  {% load app_filters %}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Platform Office Route</title>
@@ -23,7 +24,7 @@
       <div class="row align-items-center">
         <div class="col-md-6">
           <div class="hero-text">
-            <h1>OFFICE <u><em> ROUTE</em></u></h1>
+            <h1>OFFICE <u><em>ROUTE</em></u></h1>
             <p>The Smart Way to Learn Microsoft Office</p>
             <a href="#" class="btn btn-primary btn-lg mt-3">Learn Now &rarr;</a> <!-- Button here -->
           </div>
@@ -58,10 +59,10 @@
           <div class="rating-price d-flex justify-content-between align-items-center mb-3">
             <div class="rating text-warning">
               <span>{{data.rating}}</span>
-              <span class="stars">★★★★★</span>
+              <span class="stars">{{data.rating|star_rating}}</span>
             </div>
             <div class="price fw-bold text-success">
-              <span>{{data.price}}</span>
+              <span>{{data.price|currency_format}}</span>
             </div>
           </div>
           <div class="d-grid col-6 mx-auto">
