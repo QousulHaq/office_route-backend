@@ -58,7 +58,7 @@ ROOT_URLCONF = 'office_route.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'main/templates')],
+        'DIRS': [BASE_DIR.joinpath('main/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

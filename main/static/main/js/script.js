@@ -13,16 +13,16 @@ $(document).ready(function() {
           navbarSigninSound.play().then(function() {
               // Tunggu suara selesai diputar baru alihkan halaman
               setTimeout(function() {
-                  window.location.href = "login.html";
+                  window.location.href = "/login/";
               }, 1500); // Durasi menunggu sebelum pindah halaman
           }).catch(function(error) {
               console.error("Gagal memutar audio:", error);
               // Langsung alihkan halaman jika gagal memutar suara
-              window.location.href = "login.html";
+              window.location.href = "/login/";
           });
       } else {
           console.error("Audio tidak ditemukan");
-          window.location.href = "login.html"; // Tetap alihkan halaman jika audio tidak ada
+          window.location.href = "/login/"; // Tetap alihkan halaman jika audio tidak ada
       }
   });
 });
@@ -111,7 +111,7 @@ $(document).ready(function () {
       alert("Please fill in all fields.");
     } else {
       alert("Form submitted successfully! Redirecting to login...");
-      window.location.href = "login.html";
+      window.location.href = "/login/";
     }
   });
 });
