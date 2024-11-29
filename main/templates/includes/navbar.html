@@ -24,9 +24,17 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'faqs' %}">FAQs</a></li>
           </ul>
           <div class="btn-container ms-auto">
-            <a class="btn btn-signin" href="{% url 'login' %}">Sign In</a>
             <a class="btn btn-signup" href="{% url 'signup' %}">Sign Up</a>
           </div>
+          {% if user.is_authenticated %}
+          <div class="btn-container ms-auto">
+            <a class="btn btn-signup" href="{% url 'logout' %}">Logout</a>
+          </div>
+          {% else %}
+          <div class="btn-container ms-auto">
+            <a class="btn btn-signin" href="{% url 'login' %}">Sign In</a>
+          </div>
+          {% endif %}
           <audio id="navbarSigninSound" src="{% static 'main/audio/LoginOfficeRoute.mp3' %}"></audio>
         </div>
       </div>

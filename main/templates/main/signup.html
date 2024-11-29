@@ -10,48 +10,47 @@
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
 </head>
 <body>
-     <!-- Navbar -->
-     {% include 'includes/navbar.html' %}
-      <!-- End Navbar -->
+    <!-- Navbar -->
+    {% include 'includes/navbar.html' %}
+    <!-- End Navbar -->
 
-    <div class="container-signup">
+    <div class="container-signup mt-5">
         <div class="row w-100">
+            <!-- Form Section -->
             <div class="col-md-6 d-flex justify-content-center align-items-center">
-                <div class="form-container-signup">
+                <div class="form-container-signup w-75">
+                    {% if registered %}
+                    <h1>Thank you for registering!</h1>
+                    <p>You can now log in to your account.</p>
+                    <p><a href="{% url 'login' %}">Click here to log in</a></p>
+                    {% else %}
                     <h1>Welcome to Sign Up</h1>
-                    <p>Create An Account</p>
-                    <form id="SignupForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="name" class="form-control" id="name" placeholder="Enter Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Enter Password" required>
-                        <i class="bi bi-eye eye-icon" id="togglePassword"></i>
-                        </div>
+                    <p>Create an Account</p>
+                    <form enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        {{ user_form.as_p }}
+                        {{ profile_form.as_p }}
                         <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
                     </form>
-                    <p>Do you already have an account? <a href="login.html">Sign In</a></p>
+                    {% endif %}
+                    <p class="mt-3">Do you already have an account? <a href="{% url 'login' %}">Sign In</a></p>
                 </div>
             </div>
-            <div class="col-md-6 logo-container">
-                <img src="{% static 'main/images/LogoOR.png' %}" alt="Office Route Logo" />
+
+            <!-- Logo Section -->
+            <div class="col-md-6 logo-container text-center">
+                <img src="{% static 'main/images/LogoOR.png' %}" alt="Office Route Logo" class="img-fluid" />
             </div>
         </div>
     </div>
+
+    <!-- Footer Section -->
+    {% include 'includes/footer.html' %}
+
+    <!-- Script Section -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'main/js/script.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Footer section -->
-    {% include 'includes/footer.html' %}
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- End Footer section -->
 </body>
 </html>
