@@ -9,7 +9,7 @@ body {
   background-color: #f9f9f9;
 }
 
-/*CSS untuk Navbar*/
+/* CSS untuk Navbar */
 
 /* Gaya untuk mengubah navbar */
 .navbar {
@@ -120,8 +120,15 @@ body {
 /* Jarak antara tombol Sign In dan Sign Up */
 .btn-container {
   display: flex;
-  gap: 15px;
-  /* Jarak antara kedua tombol yang bisa diubah */
+  gap: 10px;
+  /* Menambahkan jarak antar tombol */
+}
+
+/* Mengatur navbar-collapse untuk menggunakan flex dan menata tombol di kanan */
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end; /* Memastikan tombol berada di kanan */
+  align-items: center; /* Menjaga agar tombol berada di tengah secara vertikal */
 }
 
 /* Gaya untuk dropdown menu */
@@ -148,6 +155,7 @@ body {
   margin-bottom: 50px;
   /* Tambahkan margin bawah untuk memberi jarak dengan footer */
 }
+
 /* End CSS Navbar */
 
 /* Bagian Hero */
