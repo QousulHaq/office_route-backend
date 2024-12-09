@@ -19,7 +19,7 @@
   <!-- End Navbar -->
   <!-- Section untuk grid thumbnail -->
   <div class="container grid-container my-5">
-    <h2 class="text-center mb-5 card-title">POPULAR COURSES</h2>
+    <h2 class="text-center mb-5 card-title">Kursus Populer</h2>
     <div class="all-courses-container row row-cols-1 row-cols-md-3 g-4">
       {% for data in course %}
       <div class="col">
@@ -41,12 +41,12 @@
                 <span class="stars text-warning">{{data.rating|star_rating}}</span>
               </div>
               <div class="price fw-bold text-success d-flex flex-column align-items-end">
-                <span>Harga Course</span>
+                <span>Harga Kursus</span>
                 <span>{{data.price|currency_format}}</span>
               </div>
             </div>
             <div class="d-grid col-6 mx-auto">
-              <a href="#" class="btn btn-primary py-2 text-white mt-3">Beli Course Sekarang</a>
+              <a href="#" class="btn btn-primary py-2 text-white mt-3">Beli Kursus Sekarang</a>
             </div>
           </div>
         </div>
