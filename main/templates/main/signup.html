@@ -1,56 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+    />
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
-</head>
-<body>
+  </head>
+
+  <body>
     <!-- Navbar -->
     {% include 'includes/navbar.html' %}
     <!-- End Navbar -->
 
-    <div class="container-signup mt-5">
-        <div class="row w-100">
-            <!-- Form Section -->
-            <div class="col-md-6 d-flex justify-content-center align-items-center">
-                <div class="form-container-signup w-75">
-                    {% if registered %}
-                    <h1>Thank you for registering!</h1>
-                    <p>You can now log in to your account.</p>
-                    <p><a href="{% url 'login' %}">Click here to log in</a></p>
-                    {% else %}
-                    <h1>Welcome to Sign Up</h1>
-                    <p>Create an Account</p>
-                    <form enctype="multipart/form-data" method="post">
-                        {% csrf_token %}
-                        {{ user_form.as_p }}
-                        {{ profile_form.as_p }}
-                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-                    </form>
-                    {% endif %}
-                    <p class="mt-3">Do you already have an account? <a href="{% url 'login' %}">Sign In</a></p>
+    <div class="container-login">
+      <div class="row w-100">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <div class="form-container">
+            {% if registered %}
+              <h1 class="text-success text-center">Thank you for registering!</h1>
+              <p class="text-center">You can now log in to your account.</p>
+              <div class="text-center">
+                <a href="{% url 'login' %}" class="btn btn-success mt-3">Log In</a>
+              </div>
+            {% else %}
+              <h1>Welcome to Sign Up</h1>
+              <p>Please fill in the details below to create your account</p>
+              <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="id_username" class="form-label">Username</label>
+                  {{ user_form.username }}
                 </div>
-            </div>
+                <div class="form-group">
+                  <label for="id_email" class="form-label">Email Address</label>
+                  {{ user_form.email }}
+                </div>
+                <div class="form-group">
+                  <label for="id_password" class="form-label">Password</label>
+                  {{ user_form.password }}
+                </div>
+                <div class="form-group">
+                  <label for="id_profile_pic" class="form-label">Profile Picture</label>
+                  {{ profile_form.profile_pic }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+              </form>
+            {% endif %}
+            <p class="mt-3">Already have an account? <a href="{% url 'login' %}">Sign In</a></p>
 
-            <!-- Logo Section -->
-            <div class="col-md-6 logo-container text-center">
-                <img src="{% static 'main/images/LogoOR.png' %}" alt="Office Route Logo" class="img-fluid" />
+            <div class="social-login mt-4">
+              <a href="https://www.google.com" target="_blank" class="social-icon google">
+                <i class="bi bi-google" style="margin-right: 8px"></i> Google
+              </a>
+              <a href="https://www.facebook.com" target="_blank" class="social-icon facebook">
+                <i class="bi bi-facebook" style="margin-right: 8px"></i> Facebook
+              </a>
             </div>
+          </div>
         </div>
+        <div class="col-md-6 logo-container">
+          <img src="{% static 'main/images/LogoOR.png' %}" alt="Office Route Logo" />
+        </div>
+      </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     {% include 'includes/footer.html' %}
 
-    <!-- Script Section -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'main/js/script.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+  </body>
 </html>
+
+<!-- Custom CSS for Signup Form -->
+<style>
+    /* Label styling */
+    label {
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    input, select, button {
+        width: 100%;
+        padding: 0.3rem; 
+        border-radius: 5px; 
+        border: 1px solid #ccc;
+        margin-bottom: 0rem;
+        font-size: 1rem; 
+        font-weight: 500;
+    }
+
+    /* Styling for file input */
+    input[type="file"] {
+        border: none;
+        padding: 0;
+    }
+
+    .btn-primary:hover {
+        background-color: #061c5a;
+    }
+
+    /* Signup link styling */
+    .text-center a {
+        color: #007bff;
+    }
+
+    .text-center a:hover {
+        text-decoration: underline;
+    }
+
+    /* Social login container styling */
+    .social-login {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Social icon button styling */
+    .social-icon {
+        padding: 10px 15px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Google social icon */
+    .social-icon.google {
+        background-color: white;
+        border: 2px solid #1e3a8a;
+        color: #1e3a8a;
+    }
+
+    /* Facebook social icon */
+    .social-icon.facebook {
+        background-color: #1e3a8a;
+    }
+
+    /* Hover effect for social icons */
+    .social-icon:hover {
+        opacity: 0.8;
+        color: #007bff;
+    }
+
+    /* Logo container styling */
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #1e3a8a;
+        border-radius: 0 15px 15px 0;
+    }
+
+    /* Logo image size */
+    .logo-container img {
+        width: 250px;
+        height: auto;
+    }
+
+    /* Row styling to ensure full width */
+    .row {
+        width: 100%;
+    }
+</style>

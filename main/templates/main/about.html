@@ -1,236 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {% load static %}
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Platform Office Route</title>
-  <!-- Bootstrap and Styles -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
-</head>
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Platform Office Route</title>
+    <!-- Bootstrap and Styles -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+  </head>
 
-<body>
-
+  <body>
     {% include 'includes/navbar.html' %}
 
-  <!-- Main Content -->
-  <div class="container-about d-flex justify-content-center align-items-center py-5">
-    <div class="box">
-      <img src="{% static 'main/images/about.png' %}" alt="Logo" />
-    </div>
-    <div class="content">
-      <h1 class="about-title">About Us</h1>
-      <p class="about-paragraph">
-        Office Route is here to make it easier for you to master Microsoft
-        Office. With interactive tutorials and practical exercises, you'll
-        quickly be able to create professional documents, spreadsheets, and
-        presentations. Office Route is committed to providing the best
-        learning experience.
-      </p>
-      <p class="about-paragraph">
-        Our materials are designed by experts in their fields and are always
-        updated according to the latest developments in Microsoft Office. With
-        Office Route, you're guaranteed to receive accurate and relevant
-        knowledge. Boost your productivity and unlock new opportunities with
-        Office Route!
-      </p>
-    </div>
-  </div>
-  <div class="container my-5">
-    <h2 class="text-center mb-4">Why Choose Office Route?</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-12">
-        <div class="list-group text-center">
-          <div class="list-group-item">
-            ✔ <strong>Expert-Designed Content:</strong> Learn from materials
-            created by industry professionals with extensive knowledge in
-            Microsoft Office.
-          </div>
-          <div class="list-group-item">
-            ✔ <strong>Interactive Learning:</strong> Engage with hands-on
-            exercises and tutorials that make learning more practical and
-            effective.
-          </div>
-          <div class="list-group-item">
-            ✔ <strong>Up-to-Date Resources:</strong> Our courses are
-            continually updated to reflect the latest features and
-            developments in Microsoft Office.
-          </div>
-          <div class="list-group-item">
-            ✔ <strong>Flexible Learning:</strong> Access our materials
-            anytime, anywhere, at your own pace, making it easier to fit
-            learning into your busy schedule.
-          </div>
-          <div class="list-group-item">
-            ✔ <strong>Community Support:</strong> Join a community of learners
-            and professionals for guidance, networking, and support throughout
-            your journey.
-          </div>
-        </div>
+    <!-- Main Content -->
+    <div
+      class="container-about d-flex justify-content-center align-items-center py-5"
+    >
+      <div class="box">
+        <img src="{% static 'main/images/about.png' %}" alt="Logo" />
+      </div>
+      <div class="content">
+        <h1 class="about-title">About Us</h1>
+        <p class="about-paragraph">
+          Office Route is here to make it easier for you to master Microsoft
+          Office. With interactive tutorials and practical exercises, you'll
+          quickly be able to create professional documents, spreadsheets, and
+          presentations. Office Route is committed to providing the best
+          learning experience.
+        </p>
+        <p class="about-paragraph">
+          Our materials are designed by experts in their fields and are always
+          updated according to the latest developments in Microsoft Office. With
+          Office Route, you're guaranteed to receive accurate and relevant
+          knowledge. Boost your productivity and unlock new opportunities with
+          Office Route!
+        </p>
       </div>
     </div>
-  </div>
-
-  <!-- Office Route Achievements -->
-  <div class="container mt-5 text-center">
-    <h2 class="mb-4 " style="color: #1E3A8A;">Office Route Achievements</h2>
-    <div class="d-flex justify-content-center flex-wrap align-items-start gap-4 mt-5"> <!-- Tambahkan mt-4 di sini -->
-      <div class="achievement-card shadow p-4 card-left">
-        <i class="bi bi-people-fill mb-3" style="font-size: 60px; color: #1E3A8A;"></i>
-        <h3 class="mb-2">90%</h3>
-        <p>of users are satisfied with the quality of the learning materials on Office Route.</p>
-      </div>
-      <div class="achievement-card shadow p-4 card-center">
-        <i class="bi bi-book-fill mb-3" style="font-size: 60px; color: #1E3A8A;"></i>
-        <h3 class="mb-2">200+</h3>
-        <p>Microsoft Office courses are available, ranging from beginner to advanced levels.</p>
-      </div>
-      <div class="achievement-card shadow p-4 card-right">
-        <i class="bi bi-person-plus-fill mb-3" style="font-size: 60px; color: #1E3A8A;"></i>
-        <h3 class="mb-2">10K+</h3>
-        <p>users have joined Office Route to improve their Microsoft Office skills.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="map-container my-5 mt-5">
-    <h2 class="mb-4" style="color: #1E3A8A ">Our Location</h2>
-    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="450" style="border:0;" allowfullscreen=""
-      loading="lazy"></iframe>
-  </div>
-
-  <!-- Back to Top Button -->
-  <button id="backToTop" class="back-to-top">
-    <i class="bi bi-arrow-up-short"></i>
-  </button>
-
-<!-- Our Partnership -->
-<div class="container">
-  <h2 class="mt-5 text-center"style="color:#1E3A8A ">Our Partnership</h2>
-  <div class="partnership-slider">
-    <div class="partnership-content">
-      <div class="partnership-row">
-        <div class="partnership-item">
-          <img src="{% static 'main/images/Logo1.png' %}" alt="Partner 1" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo2.png" alt="Partner 2" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo3.png" alt="Partner 3" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo4.png" alt="Partner 4" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo5.png" alt="Partner 5" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo6.png" alt="Partner 6" class="logo-img">
-        </div>
-        <!-- Repeat the logos to create a seamless scrolling effect -->
-        <div class="partnership-item">
-          <img src="path/to/logo1.png" alt="Partner 1" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo2.png" alt="Partner 2" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo3.png" alt="Partner 3" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo4.png" alt="Partner 4" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo5.png" alt="Partner 5" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo6.png" alt="Partner 6" class="logo-img">
-        </div>
-      </div>
-      <div class="partnership-row">
-        <div class="partnership-item">
-          <img src="path/to/logo7.png" alt="Partner 7" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo8.png" alt="Partner 8" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo9.png" alt="Partner 9" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo10.png" alt="Partner 10" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo11.png" alt="Partner 11" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo12.png" alt="Partner 12" class="logo-img">
-        </div>
-        <!-- Repeat the logos to create a seamless scrolling effect -->
-        <div class="partnership-item">
-          <img src="path/to/logo7.png" alt="Partner 7" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo8.png" alt="Partner 8" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo9.png" alt="Partner 9" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo10.png" alt="Partner 10" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo11.png" alt="Partner 11" class="logo-img">
-        </div>
-        <div class="partnership-item">
-          <img src="path/to/logo12.png" alt="Partner 12" class="logo-img">
+    <div class="container my-5">
+      <h2 class="text-center mb-4">Why Choose Office Route?</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="list-group text-center">
+            <div class="list-group-item">
+              ✔ <strong>Expert-Designed Content:</strong> Learn from materials
+              created by industry professionals with extensive knowledge in
+              Microsoft Office.
+            </div>
+            <div class="list-group-item">
+              ✔ <strong>Interactive Learning:</strong> Engage with hands-on
+              exercises and tutorials that make learning more practical and
+              effective.
+            </div>
+            <div class="list-group-item">
+              ✔ <strong>Up-to-Date Resources:</strong> Our courses are
+              continually updated to reflect the latest features and
+              developments in Microsoft Office.
+            </div>
+            <div class="list-group-item">
+              ✔ <strong>Flexible Learning:</strong> Access our materials
+              anytime, anywhere, at your own pace, making it easier to fit
+              learning into your busy schedule.
+            </div>
+            <div class="list-group-item">
+              ✔ <strong>Community Support:</strong> Join a community of learners
+              and professionals for guidance, networking, and support throughout
+              your journey.
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-      $(document).ready(function() {
-          let currentIndex = 0;
-          const $items = $('.partnership-item');
-          const totalItems = $items.length;
-          const $content = $('.partnership-content');
-  
-          function slidePartners() {
-              currentIndex++; // Increment the index
-  
-              // Calculate the translateX value based on the current index
-              const translateX = -currentIndex * (100 / (totalItems / 2)); // Each set of items is 100% width
-  
-              $content.css('transform', `translateX(${translateX}%)`);
-  
-              // Reset the index if it reaches the halfway point
-              if (currentIndex >= totalItems / 2) {
-                  currentIndex = 0;
-                  // Disable transition for instant reset
-                  $content.css('transition', 'none'); 
-                  $content.css('transform', `translateX(0%)`);
-  
-                  // Re-enable transition after a short delay
-                  setTimeout(() => {
-                      $content.css('transition', 'transform 0.5s linear');
-                  }, 50);
-              }
+    <!-- Office Route Achievements -->
+    <div class="container mt-5 text-center">
+      <h2 class="mb-4" style="color: #1e3a8a">Office Route Achievements</h2>
+      <div
+        class="d-flex justify-content-center flex-wrap align-items-start gap-4 mt-5"
+      >
+        <!-- Tambahkan mt-4 di sini -->
+        <div class="achievement-card shadow p-4 card-left">
+          <i
+            class="bi bi-people-fill mb-3"
+            style="font-size: 60px; color: #1e3a8a"
+          ></i>
+          <h3 class="mb-2">90%</h3>
+          <p>
+            of users are satisfied with the quality of the learning materials on
+            Office Route.
+          </p>
+        </div>
+        <div class="achievement-card shadow p-4 card-center">
+          <i
+            class="bi bi-book-fill mb-3"
+            style="font-size: 60px; color: #1e3a8a"
+          ></i>
+          <h3 class="mb-2">200+</h3>
+          <p>
+            Microsoft Office courses are available, ranging from beginner to
+            advanced levels.
+          </p>
+        </div>
+        <div class="achievement-card shadow p-4 card-right">
+          <i
+            class="bi bi-person-plus-fill mb-3"
+            style="font-size: 60px; color: #1e3a8a"
+          ></i>
+          <h3 class="mb-2">10K+</h3>
+          <p>
+            users have joined Office Route to improve their Microsoft Office
+            skills.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-container my-5 mt-5">
+      <h2 class="mb-4" style="color: #1e3a8a">Our Location</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=..."
+        width="100%"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+      <i class="bi bi-arrow-up-short"></i>
+    </button>
+
+    <!-- Our Partnership -->
+    <div class="container">
+      <h2 class="mt-5 text-center" style="color: #1e3a8a">Our Partnership</h2>
+      <div class="partnership-slider">
+        <div class="partnership-content">
+          <div class="partnership-row">
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo1partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo2partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo3partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo4partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo5partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo6partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <!-- Repeat the logos to create a seamless scrolling effect -->
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo7partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo8partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo9partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo10partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo11partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo12partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+          </div>
+          <div class="partnership-row">
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo13partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo14partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo3partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo3partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo3partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+            <div class="partnership-item">
+              <img
+                src="{% static 'main/images/logo3partner.png' %}"
+                alt="Partner 3"
+                class="logo-img"
+              />
+            </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let currentIndex = 0;
+        const $items = $(".partnership-item");
+        const totalItems = $items.length;
+        const $content = $(".partnership-content");
+
+        function slidePartners() {
+          currentIndex++; // Increment the index
+
+          // Calculate the translateX value based on the current index
+          const translateX = -currentIndex * (100 / (totalItems / 2)); // Each set of items is 100% width
+
+          $content.css("transform", `translateX(${translateX}%)`);
+
+          // Reset the index if it reaches the halfway point
+          if (currentIndex >= totalItems / 2) {
+            currentIndex = 0;
+            // Disable transition for instant reset
+            $content.css("transition", "none");
+            $content.css("transform", `translateX(0%)`);
+
+            // Re-enable transition after a short delay
+            setTimeout(() => {
+              $content.css("transition", "transform 0.5s linear");
+            }, 50);
           }
-          // Slide every 3 seconds
-          setInterval(slidePartners, 3000);
+        }
+        // Slide every 3 seconds
+        setInterval(slidePartners, 3000);
       });
-  </script>
+    </script>
 
     {% include 'includes/footer.html' %}
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{% static 'main/js/script.js' %}"></script>
-</body>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'main/js/script.js' %}"></script>
+  </body>
 </html>
