@@ -855,6 +855,123 @@ p {
     opacity: 1;
     transform: translateY(0);
   }
-}
+};
 
 /* END HOME */
+
+/*pembayaran*/
+/* style.css */
+html, body {
+  height: 100%; /* Pastikan seluruh halaman menggunakan tinggi penuh */
+  margin: 0;    /* Hilangkan margin bawaan */
+  font-family: "Roboto", sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center; /* Pusatkan secara horizontal */
+  align-items: center;    /* Pusatkan secara vertikal */
+}
+
+.container.pembayaran {
+  background-color: #1e3a8a;
+  color: white;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left; /* Opsional, untuk memusatkan teks */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.container.pembayaran h1 {
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 0;
+  margin-bottom: 20px;
+  background-color: #007bff; /* Tambahkan warna latar belakang */
+  border-radius: 5px; /* Membuat sudut membulat seperti tombol */
+  text-align: center; /* Untuk memastikan teks berada di tengah */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+}
+
+
+.container.pembayaran .item {
+  margin-bottom: 15px;
+}
+
+.container.pembayaran label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.container.pembayaran input,
+.container.pembayaran select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.container.pembayaran input[type="text"],
+.container.pembayaran input[type="number"] {
+  background-color: white;
+  color: #333;
+}
+
+.container.pembayaran input[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container.pembayaran input[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.container.pembayaran .total {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.container.pembayaran .total p {
+  display: flex; /* Gunakan Flexbox untuk elemen p */
+  justify-content: space-between; /* Pisahkan label dan angka */
+  margin: 5px 0;
+  color: white;
+}
+
+.container.pembayaran .total span {
+  text-align: right;
+  color: white;
+}
+
+/* Garis pemisah di atas Total */
+.container.pembayaran .total p:last-child {
+  font-weight: bold; /* Bold untuk Total */
+  border-top: 1px solid white; /* Tambahkan garis pemisah */
+  padding-top: 10px; /* Beri jarak di atas Total */
+  margin-top: 10px; /* Jarak tambahan */
+}
+
+
+
+.container.pembayaran button {
+  background-color: #3e61be;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+.container.pembayaran button:hover {
+  background-color: #3e61be;
+};
+
