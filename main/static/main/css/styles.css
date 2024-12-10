@@ -975,3 +975,77 @@ html, body {
   background-color: #3e61be;
 };
 
+  /* buat quiz.html */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+}
+
+.quiz-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #1e3a8a;
+    /* Warna biru untuk judul */
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.answer-option {
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.answer-option:hover {
+    background-color: #ddd;
+}
+
+.submit-btn {
+    width: 150px;
+    padding: 10px;
+    margin-bottom: 50px;
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #1c2a6a;
+}
+
+.result {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.question-group {
+    margin-bottom: 20px;
+}
+
+.question-group label {
+    cursor: pointer;
+}

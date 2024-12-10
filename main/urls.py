@@ -11,5 +11,7 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('cart/', views.cart_view, name='cart'),
     path('pembayaran/', views.pembayaran_view, name='pembayaran'),
+    path('menu-belajar/', views.menu_belajar, name='menu_belajar'),
+    path('quiz/', views.quiz, name='quiz'),
     # Add paths for other pages like 'about', 'faqs', 'all_courses' as needed.
 ]

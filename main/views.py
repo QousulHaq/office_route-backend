@@ -89,3 +89,9 @@ def pembayaran_view(request):
 def all_course(request):
     course_data = Course.objects.all()
     return render(request, 'main/all_course.html', context={"course" : course_data})
+
+def menu_belajar(request):
+    return render(request, 'main/menu_belajar.html')
+
+def quiz(request):
+    return render(request, 'main/quiz.html')
