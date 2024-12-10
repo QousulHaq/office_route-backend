@@ -9,5 +9,7 @@ urlpatterns = [
     path('faqs', views.faqs, name='faqs'),
     path('all_course', views.all_course, name='all_course'),
     path('logout/', views.user_logout, name='logout'),
+    path('cart/', views.cart_view, name='cart'),
+    path('pembayaran/', views.pembayaran_view, name='pembayaran'),
     # Add paths for other pages like 'about', 'faqs', 'all_courses' as needed.
 ]
