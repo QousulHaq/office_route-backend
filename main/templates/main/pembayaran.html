@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran</title>
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+</head>
+<body>
+
+    <div class="container pembayaran">
+        <h1>Order Detail</h1>
+        <div class="item">
+            <label for="course">Course</label>
+            <input type="text" id="course" value="Belajar Microsoft Office Word (Beginner)" readonly>
+        </div>
+        
+        <div class="item">
+            <label for="payment-method">Metode Pembayaran</label>
+            <select id="payment-method" onchange="showPaymentDetails()">
+                <option value="">Pilih Metode Pembayaran</option>
+                <optgroup label="Transfer Bank">
+                    <option value="bca">Bank BCA</option>
+                    <option value="mandiri">Bank Mandiri</option>
+                    <option value="bni">Bank BNI</option>
+                    <option value="bri">Bank BRI</option>
+                </optgroup>
+                <optgroup label="E-Wallet">
+                    <option value="ovo">OVO</option>
+                    <option value="dana">Dana</option>
+                    <option value="gopay">GoPay</option>
+                </optgroup>
+                <optgroup label="Supermarket">
+                    <option value="indomaret">Indomaret</option>
+                    <option value="alfamart">Alfamart</option>
+                </optgroup>
+            </select>
+        </div>        
+
+        <!-- Tempat untuk menampilkan informasi rekening berdasarkan pilihan metode pembayaran -->
+        <div id="payment-details" class="item" style="display: none;">
+            <label id="payment-label"></label>
+            <input type="text" id="account-info" readonly />
+            <button id="copy-button" onclick="copyToClipboard()">Salin</button>
+        </div>
+
+        <div class="total">
+            <p>Subtotal: <span id="subtotal">Rp 599.999</span></p>
+            <p>Total: <span id="total">Rp 599.999</span></p>
+        </div>          
+        
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <!-- Memuat file script.js -->
+    <script src="{% static 'main/js/script.js' %}"></script>
+</body>
+</html>
