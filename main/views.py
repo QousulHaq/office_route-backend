@@ -80,6 +80,12 @@ def login_view(request):
 def faqs(request):
     return render(request, 'main/faqs.html')
 
+def cart_view(request):
+    return render(request, 'main/cart.html')
+
+def pembayaran_view(request):
+    return render(request, 'main/pembayaran.html')
+
 def all_course(request):
     course_data = Course.objects.all()
     return render(request, 'main/all_course.html', context={"course" : course_data})
