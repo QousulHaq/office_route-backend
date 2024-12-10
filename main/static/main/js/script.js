@@ -131,5 +131,85 @@ if (passwordFieldType === "password") {
 }
 });
 
+function checkout() {
+  alert("Pembayaran berhasil!");
+  // Setelah alert ditutup, arahkan ke halaman cart
+  window.location.href = "/cart"; // Ganti dengan URL halaman cart Anda
+};
+
+// Fungsi untuk menampilkan informasi rekening berdasarkan pilihan
+function showPaymentDetails() {
+  var paymentMethod = document.getElementById('payment-method').value;
+  var paymentDetails = document.getElementById('payment-details');
+  var paymentLabel = document.getElementById('payment-label');
+  var accountInfo = document.getElementById('account-info');
+  
+  // Menyembunyikan div input rekening jika tidak ada pilihan
+  paymentDetails.style.display = "none";
+  
+  // Menampilkan informasi rekening sesuai pilihan
+  if (paymentMethod === 'bca') {
+      paymentLabel.textContent = 'Nomor Rekening Bank BCA:';
+      accountInfo.value = '1234567890';  // Nomor rekening BCA
+      paymentDetails.style.display = "block";
+  } else if (paymentMethod === 'mandiri') {
+      paymentLabel.textContent = 'Nomor Rekening Bank Mandiri:';
+      accountInfo.value = '9876543210';  // Nomor rekening Mandiri
+      paymentDetails.style.display = "block";
+  } else if (paymentMethod === 'bni') {
+      paymentLabel.textContent = 'Nomor Rekening Bank BNI:';
+      accountInfo.value = '1357924680';  // Nomor rekening BNI
+      paymentDetails.style.display = "block";
+  } else if (paymentMethod === 'bri') {
+      paymentLabel.textContent = 'Nomor Rekening Bank BRI:';
+      accountInfo.value = '2468135790';  // Nomor rekening BRI
+      paymentDetails.style.display = "block";
+  } else if (paymentMethod === 'ovo') {
+      paymentLabel.textContent = 'Nomor OVO:';
+      accountInfo.value = 'OVO123456789';  // Nomor OVO
+      paymentDetails.style.display = "block";
+  } else if (paymentMethod === 'dana') {
+      paymentLabel.textContent = 'Nomor Dana:';
+      accountInfo.value = 'DANA123456789';  // Nomor Dana
+      paymentDetails.style.display = "block";
+  } else if (paymentMethod === 'gopay') {
+      paymentLabel.textContent = 'Nomor GoPay:';
+      accountInfo.value = 'GOPAY123456789';  // Nomor GoPay
+      paymentDetails.style.display = "block";
+  } else if (paymentMethod === 'indomaret') {
+      paymentLabel.textContent = 'Nomor Indomaret:';
+      accountInfo.value = 'INDO123456789';  // Nomor Indomaret
+      paymentDetails.style.display = "block";
+  } else if (paymentMethod === 'alfamart') {
+      paymentLabel.textContent = 'Nomor Alfamart:';
+      accountInfo.value = 'ALFA123456789';  // Nomor Alfamart
+      paymentDetails.style.display = "block";
+  }
+}
+
+// Fungsi untuk menyalin nomor rekening ke clipboard
+function copyToClipboard() {
+  var copyText = document.getElementById("account-info");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // Untuk perangkat mobile
+  document.execCommand("copy");
+  alert("Nomor rekening telah disalin!");
+}
+
+// Fungsi untuk proses checkout
+function checkout() {
+  alert("Pembayaran berhasil!");
+  // Setelah alert ditutup, arahkan ke halaman cart
+  window.location.href = "/cart"; // Ganti dengan URL halaman cart Anda
+}
+
+// Menyinkronkan course yang dipilih di cart
+window.onload = function() {
+  const selectedCourse = localStorage.getItem('selectedCourse');
+  if (selectedCourse) {
+      document.getElementById('course').value = selectedCourse;
+  }
+};
+
 
 
