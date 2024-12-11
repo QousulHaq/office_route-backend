@@ -13,5 +13,6 @@ urlpatterns = [
     path('pembayaran/', views.pembayaran_view, name='pembayaran'),
     path('menu-belajar/', views.menu_belajar, name='menu_belajar'),
     path('quiz/', views.quiz, name='quiz'),
+    path('word_beginner', views.word_beginner, name='word_beginner')
     # Add paths for other pages like 'about', 'faqs', 'all_courses' as needed.
 ]

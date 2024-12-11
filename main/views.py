@@ -95,3 +95,6 @@ def menu_belajar(request):
 
 def quiz(request):
     return render(request, 'main/quiz.html')
+
+def word_beginner(request):
+    return render(request, 'main/word_beginner.html')

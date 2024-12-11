@@ -1108,3 +1108,112 @@ h2 {
 .question-group label {
     cursor: pointer;
 }
+
+/* ni yg di course word */
+.course-container {
+  display: flex;
+  gap: 20px; /* Jarak antara course dan mentor */
+  align-items: flex-start;
+  margin: 20px;
+}
+
+.course-details {
+  flex: 2; 
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.mentor-section {
+  flex: 1; 
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.mentor-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #1E3A8A;
+}
+
+.mentor-card {
+  text-align: center;
+}
+
+.mentor-image {
+  border-radius: 5px;
+  width: 320px;
+  height: 200px;
+  object-fit: cover;
+}
+
+
+.mentor-info {
+  text-align: left; 
+}
+
+.mentor-name {
+  text-align: center; 
+  margin-bottom: 10px; 
+  color: #1E3A8A;
+}
+
+/* tabel di course (topik pembelajaran) */
+table.table tbody td ul {
+  text-align: left; 
+  padding-left: 20px; 
+  margin: 0; 
+  list-style-type: disc; 
+}
+
+.table {
+  width: 100%; 
+  border-collapse: collapse; 
+  background-color: #1E3A8A; 
+  border: 1px solid #1E3A8A;
+}
+
+.table th,
+.table td {
+  text-align: center; 
+  vertical-align: middle; 
+  padding: 10px; 
+}
+
+.table th {
+  background-color: #1E3A8A; 
+  color: white; 
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #e0e7ff; 
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #cfe2ff; 
+}
+
+.table tbody td:first-child {
+  text-align: left;
+}
+
+.table tbody tr:hover {
+  background-color: #007bff;
+  color: white; 
+}
+
+
+.btn-custom {
+  background-color: #1E3A8A;
+  color: #ffffff;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-custom:hover {
+  background-color: #2F88FF; 
+}
