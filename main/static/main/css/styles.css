@@ -177,17 +177,19 @@ body {
 
 .btn-logout {
   background-color: #ffff; /* Transparent background */
-  color: #dc3545; /* Red text color for Logout */
-  border: 2px solid #ffff; /* Red border for Logout */
+  color: #003399; /* Red text color for Logout */
+  border: 2px solid #003399; /* Red border */
   font-weight: bold; /* Bold text */
   text-transform: uppercase; /* Uppercase letters */
-  padding: 10px 20px; /* Button padding */
+  font-size: 12px; /* Smaller font size */
+  padding: 5px 10px; /* Smaller padding */
+  border-radius: 5px; /* Optional: rounded corners */
 }
 
 .btn-logout:hover {
-  background-color: #dc3545; /* Red background on hover */
+  background-color: #003399; /* Red background on hover */
   color: white; /* White text color */
-  border: 2px solid #ffff; /* Keep the red border */
+
 }
 
 .greeting-container {
