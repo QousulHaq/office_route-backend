@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static allauth i18n %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% trans "Sign Up" %}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    {% include 'includes/navbar.html' %}
+    <!-- End Navbar -->
+
+    <div class="container-login">
+      <div class="row w-100">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <div class="form-container">
+            <h1>{% trans "Daftar" %}</h1>
+            <p>{% trans "Silakan isi detail di bawah ini untuk membuat akun Anda." %}</p>
+
+            {% if not SOCIALACCOUNT_ONLY %}
+              {% url 'account_signup' as action_url %}
+              <form method="post" enctype="multipart/form-data" action="{{ action_url }}">
+                {% csrf_token %}
+                {% element fields form=form unlabeled=True %}
+                {% endelement %}
+                {{ redirect_field }}
+                <button type="submit" class="btn btn-primary btn-block">
+                  {% trans "Daftar Sekarang" %}
+                </button>
+              </form>
+            {% endif %}
+
+            {% if PASSKEY_SIGNUP_ENABLED %}
+              <hr />
+              <a href="{{ signup_by_passkey_url }}" class="btn btn-outline-primary btn-block">
+                {% trans "Sign up using a passkey" %}
+              </a>
+            {% endif %}
+
+            {% if SOCIALACCOUNT_ENABLED %}
+              <div class="social-login mt-4">
+                {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+              </div>
+            {% endif %}
+
+            <p class="mt-3">
+              {% blocktranslate %}
+                Sudah Punya Akun? <a href="{{ login_url }}">Login Sekarang</a>.
+              {% endblocktranslate %}
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 logo-container">
+          <img src="{% static 'main/images/LogoOR.png' %}" alt="Office Route Logo" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'includes/footer.html' %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'main/js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+<!-- Custom CSS for Signup Form -->
+<style>
+/* CSS untuk Signup Form */
+.container-login {
+  margin-top: 90px;  /* Memberikan ruang di atas form untuk navbar */
+  padding-bottom: 50px;  /* Memberikan ruang di bawah form untuk footer */
+}
+
+.form-container {
+  background-color: #fff;  /* Menambahkan latar belakang putih untuk form */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Memberikan shadow agar form terlihat lebih jelas */
+  width: 90%;
+  max-width: 500px;  /* Membatasi lebar form agar tidak terlalu lebar */
+  margin: 0 auto;
+}
+
+.form-container h1 {
+  text-align: center;
+}
+
+.form-container p {
+  text-align: left;
+}
+
+/* Styling untuk button */
+.btn-primary {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+  font-weight: bold;
+}
+
+/* Menambahkan efek hover untuk tombol Sign Up */
+.btn-primary:hover {
+  background-color: #061c5a;
+}
+
+/* Styling untuk kolom logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e3a8a;
+  border-radius: 0 15px 15px 0;
+  padding: 30px;
+}
+
+.logo-container img {
+  width: 250px;
+  height: auto;
+}
+
+/* Memberikan jarak pada kolom */
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

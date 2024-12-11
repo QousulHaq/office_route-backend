@@ -29,10 +29,10 @@
                         <div class="greeting-container">
                             <span class="greeting-text">Halo, {{ user.username }}</span>
                         </div>
-                        <a class="btn btn-logout" href="{% url 'logout' %}">Logout</a>
+                        <a class="btn btn-logout" href="{% url 'logout' %}">Keluar</a>
                     {% else %}
-                        <a class="btn btn-signin" href="{% url 'login' %}">Sign In</a>
-                        <a class="btn btn-signup" href="{% url 'signup' %}">Sign Up</a>
+                        <a class="btn btn-signin" href="{% url 'account_login' %}">Masuk</a>
+                        <a class="btn btn-signup" href="{% url 'account_signup' %}">Daftar</a>
                     {% endif %}
                 </div>
             </div>
