@@ -1,5 +1,5 @@
 <!-- templates/includes/navbar.html -->
-{% load static %} <!-- This line loads the static files in your template -->
+{% load static %}
 
 <header>
     <nav class="navbar navbar-expand-lg" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1050;">
@@ -19,48 +19,28 @@
                             <li><a class="dropdown-item" href="{% url 'all_course' %}">Semua Kursus</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'about' %}">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Tentang Kami</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'faqs' %}">FAQs</a></li>
                 </ul>
                 
                 <div class="d-flex">
                     {% if user.is_authenticated %}
-                        <!-- Display Logout button and profile picture if the user is authenticated -->
-                        <a class="btn btn-signup" href="{% url 'logout' %}">Logout</a>
-                        <div class="profile-container">
-                            <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                        <!-- Display Greeting and Logout button if the user is authenticated -->
+                        <div class="greeting-container">
+                            <span class="greeting-text">Halo, {{ user.username }}</span>
                         </div>
+                        <a class="btn btn-logout" href="{% url 'logout' %}">Logout</a>
                     {% else %}
                         <a class="btn btn-signin" href="{% url 'login' %}">Sign In</a>
                         <a class="btn btn-signup" href="{% url 'signup' %}">Sign Up</a>
                     {% endif %}
                 </div>
-                
-                <audio id="navbarSigninSound" src="{% static 'main/audio/LoginOfficeRoute.mp3' %}"></audio>
             </div>
         </div>
     </nav>
 </header>
 
 <body style="padding-top: 56px;">
+    <!-- Main content goes here -->
+</body>
 
-<!-- Add CSS Styles -->
-<style>
-    .profile-container {
-        display: flex;
-        align-items: center;
-        margin-left: 10px; /* Adjust space between profile picture and logout button */
-    }
-
-    .profile-picture {
-        width: 40px; /* Size of the profile picture */
-        height: 40px; /* Size of the profile picture */
-        border-radius: 50%; /* Make the image circular */
-        object-fit: cover; /* Ensure the image doesn't stretch */
-        border: 2px solid #fff; /* Add white border around the profile picture */
-    }
-
-    .btn-signup {
-        margin-right: 10px;
-    }
-</style>

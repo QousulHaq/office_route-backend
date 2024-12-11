@@ -89,22 +89,6 @@ body {
   font-weight: bold;
 }
 
-/* Hover untuk tombol Sign In menggunakan gaya tombol Sign Up */
-.btn-signin:hover {
-  background-color: #206cbd;
-  /* Warna latar belakang saat hover */
-  color: white;
-  /* Warna teks saat hover */
-}
-
-/* Hover untuk tombol Sign Up menggunakan gaya tombol Sign In */
-.btn-signup:hover {
-  background-color: #206cbd;
-  /* Warna latar belakang saat hover */
-  color: white;
-  /* Warna teks saat hover */
-}
-
 .form-group {
   position: relative;
 }
@@ -133,7 +117,8 @@ body {
 
 /* Gaya untuk dropdown menu */
 .dropdown-menu {
-  background-color: #206cbd;
+  background-color: #185ABD;
+  border: 1px solid white;
   /* Warna background dropdown */
 }
 
@@ -154,6 +139,80 @@ body {
   margin-top: 50px;
   margin-bottom: 50px;
   /* Tambahkan margin bawah untuk memberi jarak dengan footer */
+}
+
+/* Styles for the Sign In, Sign Up, and Logout buttons */
+.btn-signin {
+  background-color: #ffff; /* Transparent background */
+  color: #ffff; /* Blue text color */
+  border: 2px solid #ffff; /* Blue border */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase letters */
+  padding: 10px 20px; /* Button padding */
+  margin-right: 10px;
+  color: #003366;
+}
+
+.btn-signin:hover {
+  background-color: #185ABD; /* Blue background on hover */
+  color: white; /* White text color */
+  border: 2px solid #ffff; /* Keep the blue border */
+}
+
+.btn-signup {
+  background-color: transparent; /* Transparent background */
+  color: #ffff; /* Green text color for Sign Up */
+  border: 2px solid #ffff; /* Green border for Sign Up */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase letters */
+  padding: 10px 20px; /* Button padding */
+  margin-right: 10px;
+}
+
+.btn-signup:hover {
+  background-color: #185ABD; /* Green background on hover */
+  color: #ffff; /* White text color */
+  border: 2px solid #ffff; /* Keep the green border */
+}
+
+.btn-logout {
+  background-color: #ffff; /* Transparent background */
+  color: #dc3545; /* Red text color for Logout */
+  border: 2px solid #ffff; /* Red border for Logout */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase letters */
+  padding: 10px 20px; /* Button padding */
+}
+
+.btn-logout:hover {
+  background-color: #dc3545; /* Red background on hover */
+  color: white; /* White text color */
+  border: 2px solid #ffff; /* Keep the red border */
+}
+
+.greeting-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px; /* Adjust space between greeting text and logout button */
+}
+
+.greeting-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* White color for greeting text */
+  padding-right: 10px;
+  font-style: italic; /* Make the greeting text italic */
+  border-radius: 8px; /* Rounded corners */
+  padding: 5px 10px; /* Add padding inside */
+}
+
+.btn-logout {
+  margin-left: 15px; /* Add space between the greeting text and the logout button */
+}
+
+/* Gaya untuk teks "Tentang Kami" agar tidak bold */
+.nav-link.tentang-kami {
+  font-weight: normal !important; /* Pastikan teks ini tidak bold */
 }
 
 /* End CSS Navbar */
