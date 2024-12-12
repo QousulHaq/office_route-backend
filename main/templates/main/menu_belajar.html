@@ -21,132 +21,37 @@
             <div class="video-section">
                 <h1 class="video-title">Belajar Microsoft Office Word (Beginner)</h1>
                 <iframe id="videoPlayer" src="https://www.youtube.com/embed/example1" allowfullscreen></iframe>
+                <h6 id="material-detail" class="mt-5 detail-course"></h6>
             </div>
             <div class="material-list">
                 <h1 class="material-title">Materi</h1>
-
+                {% for chapter in chapters %}
                 <!-- materi 1 -->
                 <div>
-                    <h5 class="material-header" onclick="toggleMaterial('material1')" style="cursor: pointer;">
-                        <i class="bi bi-chevron-down"></i> <span class="section-title">Pengantar Microsoft Word</span>
+                    <h5 class="material-header" onclick="toggleMaterial('material-{{forloop.counter}}')" style="cursor: pointer;">
+                        <i class="bi bi-chevron-down"></i> <span class="section-title">{{chapter.title}}</span>
                     </h5>
-                    <ul id="material1" class="material-content hidden">
-                        <li onclick="changeVideo('https://www.youtube.com/embed/xWnDr5gF240')" class="material-item">
-                            <span>Mengenal antarmuka Microsoft Word</span>
-                            <button class="material-button">Materi</button>
+                    <ul id="material-{{forloop.counter}}" class="material-content hidden">
+                        {% for material in chapter.materials.all %}
+                        <li onclick="changeVideo('{{material.youtube_url}}', '{{material.content}}')" class="material-item">
+                            <span>{{ material.title }}</span>
+                            <button class="material-button">
+                                {% if material.content %}
+                                Materi
+                                {% else %}
+                                Video
+                                {% endif %}
+                            </button>
                         </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example2')" class="material-item">
-                            <span>Membuat, membuka, dan menyimpan dokumen</span>
-                            <button class="material-button">Video</button>
-                        </li>
+                        {% empty %}
+                        <p>No materials available.</p>
+                        {% endfor %}
                     </ul>
                 </div>
+                {% empty %}
+                <p>No chapters available.</p>
+                {% endfor %}
 
-                <!-- materi 2 -->
-                <div>
-                    <h5 class="material-header" onclick="toggleMaterial('material2')" style="cursor: pointer;">
-                        <i class="bi bi-chevron-down"></i> <span class="section-title">Pengeditan dan Pemformatan Teks
-                            Dasar</span>
-                    </h5>
-                    <ul id="material2" class="material-content hidden">
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example3')" class="material-item">
-                            <span>Mengetik dan mengedit teks dasar</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example4')" class="material-item">
-                            <span>Mengatur jenis, ukuran, dan warna font</span>
-                            <button class="quiz-button" onclick="goToQuiz(event)">Quiz</button>
-                        </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example4')" class="material-item">
-                            <span>Menggunakan fitur tebal, miring, dan garis Bawah</span>
-                            <button class="material-button">Video</button>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <!-- materi 3 -->
-                <div>
-                    <h5 class="material-header" onclick="toggleMaterial('material3')" style="cursor: pointer;">
-                        <i class="bi bi-chevron-down"></i> <span class="section-title">Pemformatan Paragraf</span>
-                    </h5>
-                    <ul id="material3" class="material-content hidden">
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example5')" class="material-item">
-                            <span>Mengatur keselarasan teks (kiri, kanan, rata tengah)</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example6')" class="material-item">
-                            <span>Mengatur spasi baris dan paragraf</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example6')" class="material-item">
-                            <span>Membuat daftar bernomor dan berpoin (bullets)</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- materi 4 -->
-                <div>
-                    <h5 class="material-header" onclick="toggleMaterial('material4')" style="cursor: pointer;">
-                        <i class="bi bi-chevron-down"></i> <span class="section-title">Bekerja dengan Halaman</span>
-                    </h5>
-                    <ul id="material4" class="material-content hidden">
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example7')" class="material-item">
-                            <span>Menambah dan menghapus halaman</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example8')" class="material-item">
-                            <span>Mengatur margin, ukuran kertas, dan orientasi</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- materi 5 -->
-                <div>
-                    <h5 class="material-header" onclick="toggleMaterial('material5')" style="cursor: pointer;">
-                        <i class="bi bi-chevron-down"></i> <span class="section-title">Memasukkan Elemen Dasar</span>
-                    </h5>
-                    <ul id="material5" class="material-content hidden">
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example9')" class="material-item">
-                            <span>Menyisipkan gambar dan mengatur posisi gambar
-                            </span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example10')" class="material-item">
-                            <span>Menambahkan tabel sederhana</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example10')" class="material-item">
-                            <span>Menambahkan header, footer, dan nomor halaman</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- materi 6 -->
-                <div>
-                    <h5 class="material-header" onclick="toggleMaterial('material6')" style="cursor: pointer;">
-                        <i class="bi bi-chevron-down"></i> <span class="section-title">Pemeriksaan dan Penyimpanan
-                            Dokumen</span>
-                    </h5>
-                    <ul id="material6" class="material-content hidden">
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example11')" class="material-item">
-                            <span>Menggunakan fitur pemeriksaan ejaan dan tata bahasa
-                            </span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example12')" class="material-item">
-                            <span>Menyimpan dokumen dalam format yang berbeda (Word, Pdf)</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                        <li onclick="changeVideo('https://www.youtube.com/embed/example12')" class="material-item">
-                            <span>Menyimpan dan berbagi dokumen</span>
-                            <button class="material-button">Materi</button>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </main>
@@ -263,8 +168,10 @@
             }
         }
 
-        function changeVideo(videoUrl) {
+        function changeVideo(videoUrl, materialDetail) {
             document.getElementById('videoPlayer').src = videoUrl;
+            document.getElementById('material-detail').textContent = materialDetail;
+            console.log(videoUrl, materialDetail)
         }
 
         function goToQuiz(event) {

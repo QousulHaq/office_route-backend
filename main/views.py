@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from main.models import Course, Service
+from main.models import Course, Service, UserClass
 from main.forms import UserForm, UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -89,6 +89,24 @@ def pembayaran_view(request):
 def all_course(request):
     course_data = Course.objects.all()
     return render(request, 'main/all_course.html', context={"course" : course_data})
+
+def my_course(request):
+    user_classes = UserClass.objects.filter(user=request.user).select_related('course_id')
+    courses = [user_class.course_id for user_class in user_classes]
+
+    return render(request, 'main/my_course.html', context={"course" : courses})
+
+def my_course_detail(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+
+    # Ambil chapters dan materials terkait
+    chapters = course.chapters.order_by('order')  # Pastikan urutannya sesuai
+    context = {
+        'course': course,
+        'chapters': chapters,
+    }
+
+    return render(request, 'main/menu_belajar.html', context)
 
 def menu_belajar(request):
     return render(request, 'main/menu_belajar.html')
