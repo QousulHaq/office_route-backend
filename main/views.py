@@ -100,6 +100,30 @@ def quiz(request):
 def word_beginner(request):
     return render(request, 'main/word_beginner.html')
 
+def word_intermediate(request):
+    return render(request, 'main/word_intermediate.html')
+
+def word_advanced(request):
+    return render(request, 'main/word_advanced.html')
+
+def excel_beginner(request):
+    return render(request, 'main/excel_beginner.html')
+
+def excel_intermediate(request):
+    return render(request, 'main/excel_intermediate.html')
+
+def excel_advanced(request):
+    return render(request, 'main/excel_advanced.html')
+
+def ppt_beginner(request):
+    return render(request, 'main/ppt_beginner.html')
+
+def ppt_intermediate(request):
+    return render(request, 'main/ppt_intermediate.html')
+
+def ppt_advanced(request):
+    return render(request, 'main/ppt_advanced.html')
+
 # add cart bagian ini
 def add_to_cart(request, course_id):
 

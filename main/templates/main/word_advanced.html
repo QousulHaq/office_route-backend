@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ms Word Course Advanced</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+</head>
+
+<body>
+    {% include 'includes/navbar.html' %}
+    <main class="container mt-5">
+        <div class="row">
+            <!-- Course Details -->
+            <div class="col-lg-8">
+                <div class="card p-4 shadow">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h1 class="course-title">Belajar Microsoft Office Word (Advanced)</h1>
+                            <p>
+                                <strong>Course time:</strong> 5h <br>
+                                <strong>Category:</strong> Ms. Office Course <br>
+                                <strong>Rate:</strong> ⭐⭐⭐⭐⭐ 5.0
+                            </p>
+                        </div>
+                        <img src="{% static 'main/images/ms-word.png' %}" alt="Word Logo" width="100">
+                    </div>
+                    <hr>
+                    <p class="fw-bold">Dapatkan:</p>
+                    <div class="d-flex gap-3 mb-4">
+                        <span class="badge bg-primary">Video Pembelajaran</span>
+                        <span class="badge bg-success">Sertifikat</span>
+                        <span class="badge bg-info">Modul</span>
+                    </div>
+                    <h4>Deskripsi</h4>
+                    <p>
+                        Kursus Ms. Word Advanced ini dirancang untuk pengguna berpengalaman yang ingin
+                        memanfaatkan seluruh potensi Microsoft Word untuk membuat dokumen yang sangat
+                        kompleks dan profesional. Anda akan mempelajari teknik lanjutan seperti pembuatan
+                        dan penggunaan gaya, penggunaan referensi silang, membuat indeks dan daftar isi otomatis,
+                        serta mengotomatisasi tugas dengan makro. Kursus ini ideal bagi mereka yang bekerja dengan
+                        dokumen bisnis atau teknis yang memerlukan standar profesional tinggi.
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <p class="mb-0" style="font-size: 1.5rem; font-weight: bold;">Rp 599.000</p>
+                        <a href="#" class="btn btn-primary btn-lg px-4 py-2" style="font-size: 1.1rem;">
+                            <i class="bi bi-cart"></i>
+                        </a>
+                        <a href="#" class="btn btn-custom btn-lg px-4 py-2" style="font-size: 1.1rem;">
+                            Beli Course
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mentor-section">
+                <h3 class="mentor-title">Mentor</h3>
+                <div class="mentor-card">
+                    <img src="{% static 'main/images/mentor_word.png' %}" alt="Foto Mentor" class="mentor-image" />
+                    <div class="mentor-info">
+                        <h5 class="mentor-name">Gerry Dwi S.Kom, M.Kom</h5>
+                        <p><strong>Pengalaman mengajar:</strong> 4 Tahun di bidang teknologi dan pengolahan dokumen</p>
+                        <p><strong>Keahlian:</strong></p>
+                        <ul class="mentor-details">
+                            <li>Pelatihan Microsoft Word tingkat dasar hingga lanjutan</li>
+                            <li>Pengaturan tata letak, pengeditan, dan pembuatan template dokumen</li>
+                            <li>Penulisan dan format dokumen profesional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Course Topics -->
+            <div class="mt-5">
+                <h3>Topik Pembelajaran</h3>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                    <tbody>
+                        <tr>
+                            <th>Materi</th>
+                            <th>Durasi</th>
+                            <th>Tipe Materi</th>
+                        </tr>
+                        </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Mastering Templates and Styles
+                                <ul>
+                                    <li>Membuat template dokumen kustom</li>
+                                    <li>Mengelola dan menerapkan styles secara efisien</li>
+                                </ul>
+                            </td>
+                            <td>30 Menit</td>
+                            <td>Video</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Working with Long Documents
+                                <ul>
+                                    <li>Membuat dan mengelola tabel konten otomatis</li>
+                                    <li>Membuat daftar gambar dan tabel</li>
+                                    <li>Menyusun dokumen dengan heading dan subheading</li>
+                                </ul>
+                            </td>
+                            <td>1 Jam 30 Menit</td>
+                            <td>Video, Latihan, Kuis</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Using Forms and Fields
+                                <ul>
+                                    <li>Membuat dan mengelola form (text box, dropdown)</li>
+                                    <li>Menggunakan fields untuk otomatisasi data</li>
+                                </ul>
+                            </td>
+                            <td>1 Jam</td>
+                            <td>Video, Latihan, Kuis</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Automation with Macros
+                                <ul>
+                                    <li>Pengenalan dan membuat macro dasar</li>
+                                    <li>Mengedit dan mengelola macro</li>
+                                    <li>Menjalankan macro untuk otomatisasi tugas</li>
+                                </ul>
+                            </td>
+                            <td>1 Jam</td>
+                            <td>Video, Latihan</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Document Security and Sharing
+                                <ul>
+                                    <li>Melindungi dokumen dengan password</li>
+                                    <li>Menyimpan dokumen sebagai PDF dan format lainnya</li>
+                                    <li>Mengatur izin untuk berbagi dan kolaborasi</li>
+                                </ul>
+                            </td>
+                            <td>1 Jam</td>
+                            <td>Video, Latihan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </main>
+
+
+    {% include 'includes/navbar.html' %}
+
+
+    <!-- Footer section -->
+    {% include 'includes/footer.html' %}
+
+    <!-- jQuery minified -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="{% static 'main/js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
