@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  {% load app_filters %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Office Route | All Courses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  {% include 'includes/navbar.html' %}
+  <!-- End Navbar -->
+  <!-- Section untuk grid thumbnail -->
+  <div class="container grid-container my-5">
+    <h2 class="text-center mb-5 card-title">Kursus Saya</h2>
+    <div class="all-courses-container row row-cols-1 row-cols-md-3 g-4">
+      {% for data in course %}
+      <div class="col">
+        <div class="course-card card rounded-3 overflow-hidden text-center w-100 h-100">
+          <img src="{{data.image.url}}" class="course-image" alt="Course Image" />
+          <div class="card-body course-content py-3 px-4">
+            <h5 class="card-title mb-3 fw-bold">
+              {{data.title}}
+            </h5>
+            <div class="card-text">
+              <p class="mb-3">{{data.instructor}}</p>
+              <p class="course-description mb-3">
+                {{data.description}}
+              </p>
+            </div>
+            <div class="d-grid col-6 mx-auto">
+              <a href="{% url 'my_course_detail' data.id %}" class="btn btn-primary py-2 text-white mt-3">Buka Kursus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top">
+    <i class="bi bi-arrow-up-short"></i>
+  </button>
+
+  <!-- Footer section -->
+  {% include 'includes/footer.html' %}
+  <!-- jQuery minified -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="module" src="data/card.js"></script>
+  <script type="module" src="dynamic-card.js"></script>
+  <script src="{% static 'main/js/script.js' %}"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

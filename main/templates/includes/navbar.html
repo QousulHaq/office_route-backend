@@ -22,6 +22,7 @@
                         </ul>
                     </li>
                     <!-- Tentang Kami -->
+                    <li class="nav-item"><a class="nav-link" href="{% url 'my_course' %}">Kursus Saya</a></li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">Tentang Kami</a>
                     </li>
