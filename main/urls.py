@@ -13,7 +13,8 @@ urlpatterns = [
     path('pembayaran/', views.pembayaran_view, name='pembayaran'),
     path('menu_belajar/', views.menu_belajar, name='menu_belajar'),
     path('quiz/', views.quiz, name='quiz'),
-     path('add_to_cart/<int:course_id>/', views.add_to_cart, name='add_to_cart'),
+    path('add_to_cart/<int:course_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart/', views.view_cart, name='view_cart'),
     path('word_beginner', views.word_beginner, name='word_beginner')
     # Add paths for other pages like 'about', 'faqs', 'all_courses' as needed.
 ]
