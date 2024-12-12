@@ -5,14 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% trans "Sign Up" %}</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
   </head>
 
@@ -32,13 +26,12 @@
               {% url 'account_signup' as action_url %}
               <form method="post" enctype="multipart/form-data" action="{{ action_url }}">
                 {% csrf_token %}
-                {% element fields form=form unlabeled=True %}
-                {% endelement %}
+                {{ form.as_p }}
                 {{ redirect_field }}
                 <button type="submit" class="btn btn-primary btn-block">
-                  {% trans "Daftar Sekarang" %}
+                    {% trans "Daftar Sekarang" %}
                 </button>
-              </form>
+            </form>
             {% endif %}
 
             {% if PASSKEY_SIGNUP_ENABLED %}
@@ -85,10 +78,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh; /* Menjaga tinggi minimum layar */
+  min-height: 80vh;
 }
 
-/* Styling untuk form */
 .form-container {
   background-color: #fff;
   padding: 30px;
@@ -109,11 +101,6 @@
   margin-bottom: 20px;
 }
 
-.form-container .form-group {
-  margin-bottom: 15px;
-}
-
-/* Styling untuk input */
 .form-container input {
   border-radius: 5px;
   border: 1px solid #ced4da;
@@ -121,7 +108,6 @@
   width: 100%;
 }
 
-/* Styling untuk tombol */
 .btn-primary {
   background-color: #1e3a8a;
   border-color: #1e3a8a;
@@ -130,16 +116,6 @@
   padding: 5px;
 }
 
-.social-login button {
-  width: 100%;
-  margin-top: 10px;
-}
-
-.social-login button i {
-  margin-right: 10px;
-}
-
-/* Styling untuk link */
 .form-container a {
   color: #1e3a8a;
   font-weight: bold;
@@ -150,9 +126,8 @@
   text-decoration: underline;
 }
 
-/* Kolom logo */
 .logo-container {
-  display: none; /* Sembunyikan logo di layar kecil */
+  display: none;
 }
 
 @media (min-width: 768px) {

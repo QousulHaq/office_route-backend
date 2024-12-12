@@ -25,35 +25,36 @@
       <div class="row w-100">
         <div class="col-md-6 d-flex justify-content-center align-items-center">
           <div class="form-container">
-            <h1>Welcome to Sign In</h1>
-            <p>Please fill in the below details to login to your account</p>
+            <h1 class="text-center">Selamat Datang, Silakan Masuk</h1>
+            <p>Isi detail di bawah untuk masuk.</p>
             <!-- Login Form -->
             <form action="{% url 'login' %}" method="post">
               {% csrf_token %}
               <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
+                <label for="username" class="form-label">Nama Pengguna</label>
                 <input
                   type="text"
                   name="username"
-                  placeholder="Enter username"
+                  placeholder="Masukkan Nama Pengguna"
                   class="form-control"
                   id="username"
                   required
                 />
               </div>
               <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">Kata Sandi</label>
                 <input
                   type="password"
                   name="password"
+                  placeholder="Masukkan Kata Sandi"
                   class="form-control"
                   id="password"
                   required
                 />
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+              <button type="submit" class="btn btn-primary btn-block">Masuk</button>
             </form>
-            <p class="mt-3">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+            <p class="mt-3 text-center">Belum punya akun? <a href="{% url 'signup' %}">Daftar</a></p>
 
             <div class="social-login mt-4">
               <a href="https://www.google.com" target="_blank" class="social-icon google">

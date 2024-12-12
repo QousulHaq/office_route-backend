@@ -27,7 +27,7 @@
       <div class="row w-100">
         <div class="col-md-6 d-flex justify-content-center align-items-center">
           <div class="form-container">
-            <h1>{% trans "Masuk" %}</h1>
+            <h1 class="text-center">{% trans "Masuk" %}</h1>
             <p>{% trans "Silakan isi detail di bawah ini untuk masuk ke akun Anda." %}</p>
 
             <!-- Login Form -->
@@ -50,7 +50,7 @@
             {% endif %}
 
             <!-- Link to Sign Up -->
-            <p class="mt-3">
+            <p class="mt-3 text-center">
                 {% trans "Belum Punya Akun?" %} 
                 <a href="{% url 'account_signup' %}" class="text-primary">
                     {% trans "Daftar Sekarang" %}
