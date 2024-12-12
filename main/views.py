@@ -113,4 +113,9 @@ def add_to_cart(request, course_id):
         request.session['cart'].append(course_id)
         request.session.modified = True  # Tandai session sebagai berubah
     
-    return redirect('all_course')
+    return redirect('main/all_course.html')
+
+def view_cart(request):
+    cart = request.session.get('cart', [])
+    return render(request, 'main/cart.html', {'cart': cart})
+
