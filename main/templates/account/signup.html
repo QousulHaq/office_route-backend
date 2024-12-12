@@ -79,62 +79,95 @@
 
 <!-- Custom CSS for Signup Form -->
 <style>
-/* CSS untuk Signup Form */
 .container-login {
-  margin-top: 90px;  /* Memberikan ruang di atas form untuk navbar */
-  padding-bottom: 50px;  /* Memberikan ruang di bawah form untuk footer */
+  margin-top: 180px;
+  padding-bottom: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Menjaga tinggi minimum layar */
 }
 
+/* Styling untuk form */
 .form-container {
-  background-color: #fff;  /* Menambahkan latar belakang putih untuk form */
+  background-color: #fff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Memberikan shadow agar form terlihat lebih jelas */
-  width: 90%;
-  max-width: 500px;  /* Membatasi lebar form agar tidak terlalu lebar */
-  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
 }
 
 .form-container h1 {
   text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .form-container p {
   text-align: left;
+  margin-bottom: 20px;
 }
 
-/* Styling untuk button */
+.form-container .form-group {
+  margin-bottom: 15px;
+}
+
+/* Styling untuk input */
+.form-container input {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  padding: 5px;
+  width: 100%;
+}
+
+/* Styling untuk tombol */
 .btn-primary {
   background-color: #1e3a8a;
   border-color: #1e3a8a;
   font-weight: bold;
-}
-
-/* Menambahkan efek hover untuk tombol Sign Up */
-.btn-primary:hover {
-  background-color: #061c5a;
-}
-
-/* Styling untuk kolom logo */
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #1e3a8a;
-  border-radius: 0 15px 15px 0;
-  padding: 30px;
-}
-
-.logo-container img {
-  width: 250px;
-  height: auto;
-}
-
-/* Memberikan jarak pada kolom */
-.row {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 5px;
+}
+
+.social-login button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.social-login button i {
+  margin-right: 10px;
+}
+
+/* Styling untuk link */
+.form-container a {
+  color: #1e3a8a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
+
+/* Kolom logo */
+.logo-container {
+  display: none; /* Sembunyikan logo di layar kecil */
+}
+
+@media (min-width: 768px) {
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e3a8a;
+    border-radius: 0 15px 15px 0;
+    padding: 30px;
+  }
+
+  .logo-container img {
+    width: 300px;
+    height: auto;
+  }
 }
 </style>

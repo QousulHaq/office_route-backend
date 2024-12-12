@@ -41,6 +41,10 @@
                         {{ redirect_field }}
                     {% endslot %}
                     {% slot actions %}
+                        <!-- Tambahkan button submit di sini -->
+                        <button type="submit" class="btn btn-primary btn-block">
+                            {% trans "Masuk" %}
+                        </button>
                     {% endslot %}
                 {% endelement %}
             {% endif %}
