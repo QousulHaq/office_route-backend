@@ -27,43 +27,51 @@
       <div class="row w-100">
         <div class="col-md-6 d-flex justify-content-center align-items-center">
           <div class="form-container">
-            <h1 class="text-center">{% trans "Masuk" %}</h1>
+            <h1 class="text-center">{% trans "Selamat Datang, Silakan Masuk" %}</h1>
             <p>{% trans "Silakan isi detail di bawah ini untuk masuk ke akun Anda." %}</p>
 
-            <!-- Login Form -->
-            {% if not SOCIALACCOUNT_ONLY %}
-                {% url 'account_login' as login_url %}
-                {% element form form=form method="post" action=login_url tags="entrance,login" %}
-                    {% slot body %}
-                        {% csrf_token %}
-                        {% element fields form=form unlabeled=True %}
-                        {% endelement %}
-                        {{ redirect_field }}
-                    {% endslot %}
-                    {% slot actions %}
-                        <!-- Tambahkan button submit di sini -->
-                        <button type="submit" class="btn btn-primary btn-block">
-                            {% trans "Masuk" %}
-                        </button>
-                    {% endslot %}
-                {% endelement %}
-            {% endif %}
+            <!-- Form Login -->
+{% if not SOCIALACCOUNT_ONLY %}
+<form action="{% url 'account_login' %}" method="post" class="login-form">
+  {% csrf_token %}
+  {% for field in form %}
+    <div class="form-group">
+      <label for="{{ field.id_for_label }}" class="form-label">
+        {{ field.label }}
+      </label>
+      {{ field }}
+      {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+      {% for error in field.errors %}
+        <div class="text-danger">{{ error }}</div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary btn-block login-btn">
+    {% trans "Masuk" %}
+  </button>
+</form>
+{% endif %}
 
-            <!-- Link to Sign Up -->
+            <!-- Link ke Pendaftaran -->
             <p class="mt-3 text-center">
-                {% trans "Belum Punya Akun?" %} 
-                <a href="{% url 'account_signup' %}" class="text-primary">
-                    {% trans "Daftar Sekarang" %}
-                </a>
+              {% trans "Belum Punya Akun?" %}
+              <a href="{% url 'account_signup' %}" class="text-primary">
+                {% trans "Daftar Sekarang" %}
+              </a>
             </p>
 
+            <!-- Login Sosial (Google, Facebook, dll.) -->
             {% if SOCIALACCOUNT_ENABLED %}
-                {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+              <div class="social-login mt-4">
+                {% include "socialaccount/snippets/login.html" %}
+              </div>
             {% endif %}
           </div>
         </div>
         <div class="col-md-6 logo-container">
-          <img src="{% static 'main/images/LogoOR.png' %}" alt="Office Route Logo" />
+          <img src="{% static 'main/images/LogoOR.png' %}" alt="Office Route Logo" class="img-fluid" />
         </div>
       </div>
     </div>

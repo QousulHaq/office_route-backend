@@ -8,18 +8,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Office Route | All Courses</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"
-    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+  <style>
+    .header-title-container {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .header-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .cart-icon {
+      text-align: right;
+    }
+  </style>
 </head>
 
 <body>
   <!-- Navbar -->
   {% include 'includes/navbar.html' %}
   <!-- End Navbar -->
+
   <!-- Section untuk grid thumbnail -->
   <div class="container grid-container my-5">
-    <h2 class="text-center mb-5 card-title">Kursus Populer</h2>
+    <div class="row align-items-center header-title-container">
+      <!-- Kursus Populer -->
+      <h2 class="header-title card-title mb-0">Kursus Populer</h2>
+      <!-- Keranjang -->
+      <div class="col-md-12 cart-icon">
+        <button class="btn btn-outline-primary d-inline-flex align-items-center px-3" data-bs-toggle="modal" data-bs-target="#cartModal">
+          <i class="bi bi-cart4 me-2"></i> Keranjang
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid kursus -->
     <div class="all-courses-container row row-cols-1 row-cols-md-3 g-4">
       {% for data in course %}
       <div class="col">
@@ -27,12 +52,12 @@
           <img src="{{data.image.url}}" class="course-image" alt="Course Image" />
           <div class="card-body course-content py-3 px-4">
             <h5 class="card-title mb-3 fw-bold">
-              {{data.title}} 
+              {{data.title}}
             </h5>
             <div class="card-text">
               <p class="mb-3">{{data.instructor}}</p>
               <p class="course-description mb-3">
-                {{data.description}} 
+                {{data.description}}
               </p>
             </div>
             <div class="rating-price d-flex justify-content-between align-items-center mb-3">
@@ -46,7 +71,7 @@
               </div>
             </div>
             <div class="d-grid col-6 mx-auto">
-              <a href="#" class="btn btn-primary py-2 text-white mt-3">Beli Kursus Sekarang</a>
+              <a href="{% url 'word_beginner' %}" class="btn btn-primary py-2 text-white mt-3">Beli Kursus Sekarang</a>
             </div>
           </div>
         </div>
@@ -54,25 +79,44 @@
       {% endfor %}
     </div>
   </div>
-  <!-- End Section untuk grid thumbnail -->
 
-  <div class="d-grid col-6 mx-auto">
-      <a href="{% url 'add_to_cart' data.id %}" class="btn btn-primary py-2 text-white mt-3">Beli Kursus Sekarang</a>
+  <!-- Modal untuk Keranjang -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Isi Keranjang</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Kursus Microsoft Word (Pemula)
+              <span class="fw-bold text-success">Rp 900.000</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Kursus PowerPoint (Menengah)
+              <span class="fw-bold text-success">Rp 1.200.000</span>
+            </li>
+          </ul>
+          <p class="mt-3">Total: <span class="fw-bold text-primary">Rp 2.100.000</span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          <a href="{% url 'checkout' %}" class="btn btn-primary">Lanjut ke Checkout</a>
+        </div>
+      </div>
+    </div>
   </div>
-
 
   <!-- Back to Top Button -->
   <button id="backToTop" class="back-to-top">
     <i class="bi bi-arrow-up-short"></i>
   </button>
 
-  <!-- Footer section -->
+  <!-- Footer -->
   {% include 'includes/footer.html' %}
-  <!-- jQuery minified -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="module" src="data/card.js"></script>
-  <script type="module" src="dynamic-card.js"></script>
-  <script src="{% static 'main/js/script.js' %}"></script>
+
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -98,3 +98,9 @@ def quiz(request):
 
 def word_beginner(request):
     return render(request, 'main/word_beginner.html')
+def checkout(request):
+    # Logika untuk halaman checkout
+    return render(request, 'main/checkout.html')  # Pastikan Anda memiliki file checkout.html
+
+
+
