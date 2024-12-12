@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.shortcuts import redirect, get_object_or_404
 from django.http import HttpResponse
 from main.models import Course, Service, UserClass
 from main.forms import UserForm, UserProfileInfoForm
@@ -116,3 +117,47 @@ def quiz(request):
 
 def word_beginner(request):
     return render(request, 'main/word_beginner.html')
+
+def word_intermediate(request):
+    return render(request, 'main/word_intermediate.html')
+
+def word_advanced(request):
+    return render(request, 'main/word_advanced.html')
+
+def excel_beginner(request):
+    return render(request, 'main/excel_beginner.html')
+
+def excel_intermediate(request):
+    return render(request, 'main/excel_intermediate.html')
+
+def excel_advanced(request):
+    return render(request, 'main/excel_advanced.html')
+
+def ppt_beginner(request):
+    return render(request, 'main/ppt_beginner.html')
+
+def ppt_intermediate(request):
+    return render(request, 'main/ppt_intermediate.html')
+
+def ppt_advanced(request):
+    return render(request, 'main/ppt_advanced.html')
+
+# add cart bagian ini
+def add_to_cart(request, course_id):
+
+    if 'cart' not in request.session:
+        request.session['cart'] = []
+    
+    course = get_object_or_404(Course, id=course_id)
+
+
+    if course_id not in request.session['cart']:
+        request.session['cart'].append(course_id)
+        request.session.modified = True  # Tandai session sebagai berubah
+    
+    return redirect('main/all_course.html')
+
+def view_cart(request):
+    cart = request.session.get('cart', [])
+    return render(request, 'main/cart.html', {'cart': cart})
+

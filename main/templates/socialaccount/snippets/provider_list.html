@@ -1,0 +1,24 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+{% load i18n %}
+{% load allauth socialaccount %}
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+    {% element provider_list %}
+        {% for provider in socialaccount_providers %}
+            {% if provider.id == "google" %}
+                <!-- Custom Google Login Button with Bootstrap Icons -->
+                {% provider_login_url provider process=process scope=scope auth_params=auth_params as href %}
+                <a href="{{ href }}" class="btn btn-primary btn-block d-flex align-items-center justify-content-center">
+                    <i class="bi bi-google me-2"></i> 
+                    {% translate " Masuk Dengan Google" %}
+                </a>
+            {% else %}
+                <!-- Default Provider Login -->
+                {% provider_login_url provider process=process scope=scope auth_params=auth_params as href %}
+                {% element provider name=provider.name provider_id=provider.id href=href %}
+                {% endelement %}
+            {% endif %}
+        {% endfor %}
+    {% endelement %}
+{% endif %}

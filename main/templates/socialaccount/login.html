@@ -1,0 +1,122 @@
+{% extends "socialaccount/base_entrance.html" %}
+{% load static allauth i18n %}
+
+{% block head_title %}
+    {% trans "Sign In" %}
+{% endblock head_title %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% blocktrans %}Sign In{% endblocktrans %}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        margin: 0;
+        font-family: "Arial", sans-serif;
+      }
+
+      .container-login {
+        margin: 100px auto;
+        padding: 30px;
+        max-width: 600px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .container-login h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #003366;
+      }
+
+      .container-login p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        color: #555;
+      }
+
+      .btn-primary {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #003366;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #002244;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container-login {
+          padding: 20px;
+        }
+
+        .container-login h1 {
+          font-size: 1.8rem;
+        }
+
+        .container-login p {
+          font-size: 0.9rem;
+        }
+
+        .btn-primary {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    {% include 'includes/navbar.html' %}
+    <!-- End Navbar -->
+
+    <div class="container">
+      <div class="container-login">
+        {% if process == "connect" %}
+          <h1>{% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}</h1>
+          <p>{% blocktrans with provider.name as provider %}You are about to connect a new third-party account from {{ provider }}.{% endblocktrans %}</p>
+        {% else %}
+          <h1>{% blocktrans with provider.name as provider %}Masuk Menggunakan {{ provider }}{% endblocktrans %}</h1>
+          <p>{% blocktrans with provider.name as provider %}Anda akan masuk menggunakan akun {{ provider }}.{% endblocktrans %}</p>
+        {% endif %}
+
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">
+            {% trans "Masuk" %}
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'includes/footer.html' %}
+    <!-- End Footer -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endblock content %}

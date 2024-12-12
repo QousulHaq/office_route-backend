@@ -12,28 +12,34 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Beranda</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Beranda</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kursus</a>
+                        <a class="nav-link dropdown-toggle {% if request.path == '/kursus' or request.path == '/all_course' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kursus</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'all_course' %}">Semua Kursus</a></li>
+                            <li><a class="dropdown-item {% if request.path == '/all_course' %}active{% endif %}" href="{% url 'all_course' %}">Semua Kursus</a></li>
                         </ul>
                     </li>
+                    <!-- Tentang Kami -->
                     <li class="nav-item"><a class="nav-link" href="{% url 'my_course' %}">Kursus Saya</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Tentang Kami</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'faqs' %}">FAQs</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/faqs' %}active{% endif %}" href="{% url 'faqs' %}">FAQs</a>
+                    </li>
                 </ul>
                 
                 <div class="d-flex">
                     {% if user.is_authenticated %}
-                        <!-- Display Greeting and Logout button if the user is authenticated -->
                         <div class="greeting-container">
                             <span class="greeting-text">Halo, {{ user.username }}</span>
                         </div>
-                        <a class="btn btn-logout" href="{% url 'logout' %}">Logout</a>
+                        <a class="btn btn-logout" href="{% url 'logout' %}">Keluar</a>
                     {% else %}
-                        <a class="btn btn-signin" href="{% url 'login' %}">Sign In</a>
-                        <a class="btn btn-signup" href="{% url 'signup' %}">Sign Up</a>
+                        <a class="btn btn-signin" href="{% url 'account_login' %}">Masuk</a>
+                        <a class="btn btn-signup" href="{% url 'account_signup' %}">Daftar</a>
                     {% endif %}
                 </div>
             </div>
@@ -45,3 +51,44 @@
     <!-- Main content goes here -->
 </body>
 
+<style>
+/* Menambahkan garis bawah pada menu aktif dengan animasi cahaya */
+.nav-link.active {
+    border-bottom: 2px solid #007bff; /* Garis bawah tipis dengan warna biru */
+    position: relative;
+}
+
+/* Animasi efek cahaya */
+.nav-link.active::after {
+
+    background: linear-gradient(to right, #00f, #0ff, #00f); /* Efek cahaya */
+}
+
+/* Keyframe untuk animasi cahaya */
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 2px #00f, 0 0 4px #0ff; /* Efek cahaya lebih lembut */
+    }
+    100% {
+        box-shadow: 0 0 4px #00f, 0 0 6px #0ff; /* Efek cahaya lebih ringan */
+    }
+}
+
+/* Menambahkan garis bawah pada item dropdown yang aktif */
+.navbar-nav .dropdown-menu .dropdown-item.active {
+    border-bottom: 2px solid #007bff; /* Sesuaikan warna sesuai kebutuhan */
+    position: relative;
+}
+
+.navbar-nav .dropdown-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px; /* Menyesuaikan tinggi garis pada item dropdown */
+    background: linear-gradient(to right, #00f, #0ff, #00f); /* Efek cahaya */
+    animation: glowing 1.5s ease-in-out infinite alternate; /* Animasi efek cahaya */
+}
+
+</style>
