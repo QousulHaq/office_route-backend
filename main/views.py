@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect, get_object_or_404
 from django.http import HttpResponse
 from main.models import Course, Service
 from main.forms import UserForm, UserProfileInfoForm
@@ -98,3 +99,18 @@ def quiz(request):
 
 def word_beginner(request):
     return render(request, 'main/word_beginner.html')
+
+# add cart bagian ini
+def add_to_cart(request, course_id):
+
+    if 'cart' not in request.session:
+        request.session['cart'] = []
+    
+    course = get_object_or_404(Course, id=course_id)
+
+
+    if course_id not in request.session['cart']:
+        request.session['cart'].append(course_id)
+        request.session.modified = True  # Tandai session sebagai berubah
+    
+    return redirect('all_course')
