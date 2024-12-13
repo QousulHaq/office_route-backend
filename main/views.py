@@ -226,6 +226,30 @@ def ppt_intermediate(request):
 def ppt_advanced(request):
     return render(request, 'main/ppt_advanced.html')
 
+def lms_word_intermediate(request):
+    return render(request, 'main/lms_word_intermediate.html')
+
+def lms_word_advance(request):
+    return render(request, 'main/lms_word_advance.html')
+
+def lms_ppt_beginner(request):
+    return render(request, 'main/lms_ppt_beginner.html')
+
+def lms_ppt_intermediate(request):
+    return render(request, 'main/lms_ppt_intermediate.html')
+
+def lms_ppt_advance(request):
+    return render(request, 'main/lms_ppt_advance.html')
+
+def lms_excel_beginner(request):
+    return render(request, 'main/lms_excel_beginner.html')
+
+def lms_excel_intermediate(request):
+    return render(request, 'main/lms_excel_intermediate.html')
+
+def lms_excel_advance(request):
+    return render(request, 'main/lms_excel_advance.html')
+
 # # add cart bagian ini
 # def add_to_cart(request, course_id):
 

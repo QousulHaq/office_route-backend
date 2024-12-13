@@ -30,6 +30,15 @@ urlpatterns = [
     path('ppt_beginner', views.ppt_beginner, name='ppt_beginner'),
     path('ppt_intermediate', views.ppt_intermediate, name='ppt_intermediate'),
     path('ppt_advanced', views.ppt_advanced, name='ppt_advanced'),
+
+    path('lms_word_intermediate', views.lms_word_intermediate, name='lms_word_intermediate'),
+    path('lms_word_advance', views.lms_word_advance, name='lms_word_advance'),
+    path('lms_ppt_beginner', views.lms_ppt_beginner, name='lms_ppt_beginner'),
+    path('lms_ppt_intermediate', views.lms_ppt_intermediate, name='lms_ppt_intermediate'),
+    path('lms_ppt_advance', views.lms_ppt_advance, name='lms_ppt_advance'),
+    path('lms_excel_beginner', views.lms_excel_beginner, name='lms_excel_beginner'),
+    path('lms_excel_intermediate', views.lms_excel_intermediate, name='lms_excel_intermediate'),
+    path('lms_excel_advance', views.lms_excel_advance, name='lms_excel_advance'),
     
     path('cart/add/<int:course_id>/', views.add_to_cart, name='add_to_cart'),
     path('checkout/', views.checkout, name='checkout'),

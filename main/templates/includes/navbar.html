@@ -46,8 +46,12 @@
                     </li>
                 </ul>
 
-                <div class="d-flex">
+                <div class="d-flex align-items-center">
                     {% if user.is_authenticated %}
+                    <button class="btn btn-outline-primary d-inline-flex align-items-center px-3 me-3" data-bs-toggle="modal"
+                        data-bs-target="#cartModal">
+                        <i class="bi bi-cart4 me-2"></i>
+                    </button>
                     <div class="greeting-container">
                         <span class="greeting-text">Halo, {{ user.username }}</span>
                     </div>
@@ -70,34 +74,28 @@
     /* Menambahkan garis bawah pada menu aktif dengan animasi cahaya */
     .nav-link.active {
         border-bottom: 2px solid #007bff;
-        /* Garis bawah tipis dengan warna biru */
         position: relative;
     }
 
     /* Animasi efek cahaya */
     .nav-link.active::after {
-
         background: linear-gradient(to right, #00f, #0ff, #00f);
-        /* Efek cahaya */
     }
 
     /* Keyframe untuk animasi cahaya */
     @keyframes glowing {
         0% {
             box-shadow: 0 0 2px #00f, 0 0 4px #0ff;
-            /* Efek cahaya lebih lembut */
         }
 
         100% {
             box-shadow: 0 0 4px #00f, 0 0 6px #0ff;
-            /* Efek cahaya lebih ringan */
         }
     }
 
     /* Menambahkan garis bawah pada item dropdown yang aktif */
     .navbar-nav .dropdown-menu .dropdown-item.active {
         border-bottom: 2px solid #007bff;
-        /* Sesuaikan warna sesuai kebutuhan */
         position: relative;
     }
 
@@ -108,10 +106,7 @@
         left: 0;
         width: 100%;
         height: 1px;
-        /* Menyesuaikan tinggi garis pada item dropdown */
         background: linear-gradient(to right, #00f, #0ff, #00f);
-        /* Efek cahaya */
         animation: glowing 1.5s ease-in-out infinite alternate;
-        /* Animasi efek cahaya */
     }
 </style>
