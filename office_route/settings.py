@@ -28,6 +28,8 @@ SECRET_KEY = 'django-insecure-m0n^hr^g5*(c$58k#%0j9)0mqhv^2qf6-&qu!k@h+&kb)yb!8*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -44,7 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
 
-    # Optional -- requires install using `django-allauth[socialaccount]` for Google login
+    # Optional -- requires install using django-allauth[socialaccount] for Google login
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 ]
@@ -92,9 +94,9 @@ DATABASES = {
 }
 
 AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
+    # Needed to login by username in Django admin, regardless of allauth
     'django.contrib.auth.backends.ModelBackend',
-    # `allauth` specific authentication methods, such as login by email
+    # allauth specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 

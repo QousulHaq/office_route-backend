@@ -90,12 +90,31 @@ def cart_view(request):
 def pembayaran_view(request):
     return render(request, 'main/pembayaran.html')
 
-def all_course(request):
-    course_data = Course.objects.all()
-    cart = Cart.objects.get(user=request.user)
-    total_price = sum(course.price for course in cart.courses.all())
+# def all_course(request):
+#     course_data = Course.objects.all()
+#     cart = Cart.objects.get(user=request.user)
+#     total_price = sum(course.price for course in cart.courses.all())
 
-    return render(request, 'main/all_course.html', context={"course" : course_data, 'cart': cart, 'total_price': total_price})
+#     return render(request, 'main/all_course.html', context={"course" : course_data, 'cart': cart, 'total_price': total_price})
+
+def all_course(request):
+    if request.user.is_authenticated:    
+        course_data = Course.objects.all()
+
+        try:
+            cart = Cart.objects.get(user=request.user)
+            total_price = sum(course.price for course in cart.courses.all())
+        except Cart.DoesNotExist:
+            cart = None
+            total_price = 0
+
+        return render(request, 'main/all_course.html', context={"course": course_data, 'cart': cart, 'total_price': total_price})
+
+    else:    
+        course_data = Course.objects.all()
+        
+        return render(request, 'main/all_course.html', context={"course": course_data})
+
 
 def all_course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
