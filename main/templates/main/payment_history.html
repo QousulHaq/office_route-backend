@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    {% load app_filters %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Office Route | All Courses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+    <style>
+        .header-title-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .header-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cart-icon {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    {% include 'includes/navbar.html' %}
+    <!-- End Navbar -->
+
+    <div class="container mt-5" style="height: 100vh;">
+        <h1>Riwayat Pembayaran</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Total Harga</th>
+                    <th>Status</th>
+                    <th>Bukti Pembayaran</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>Rp. {{ order.total_price|currency_format }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>
+                        {% if order.payment_proof %}
+                            <a href="{{ order.payment_proof.url }}" target="_blank">Lihat Bukti</a>
+                        {% else %}
+                            Belum diunggah
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if order.status == 'Pending' %}
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#uploadModal{{ order.id }}">
+                            Unggah Bukti
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="uploadModal{{ order.id }}" tabindex="-1" aria-labelledby="uploadModalLabel{{ order.id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="uploadModalLabel{{ order.id }}">Unggah Bukti Pembayaran</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form method="post" enctype="multipart/form-data" action="{% url 'upload_payment_proof' order.id %}">
+                                        {% csrf_token %}
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="paymentProof" class="form-label">Upload Bukti Pembayaran</label>
+                                                <input type="file" class="form-control" name="payment_proof" id="paymentProof" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-primary">Upload</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="bi bi-arrow-up-short"></i>
+    </button>
+
+    <!-- Footer -->
+    {% include 'includes/footer.html' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

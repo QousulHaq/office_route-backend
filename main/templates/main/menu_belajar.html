@@ -28,12 +28,14 @@
                 {% for chapter in chapters %}
                 <!-- materi 1 -->
                 <div>
-                    <h5 class="material-header" onclick="toggleMaterial('material-{{forloop.counter}}')" style="cursor: pointer;">
+                    <h5 class="material-header" onclick="toggleMaterial('material-{{forloop.counter}}')"
+                        style="cursor: pointer;">
                         <i class="bi bi-chevron-down"></i> <span class="section-title">{{chapter.title}}</span>
                     </h5>
                     <ul id="material-{{forloop.counter}}" class="material-content hidden">
                         {% for material in chapter.materials.all %}
-                        <li onclick="changeVideo('{{material.youtube_url}}', '{{material.content}}')" class="material-item">
+                        <li onclick="changeVideo('{{material.youtube_url}}', '{{material.content}}')"
+                            class="material-item">
                             <span>{{ material.title }}</span>
                             <button class="material-button">
                                 {% if material.content %}
@@ -46,6 +48,49 @@
                         {% empty %}
                         <p>No materials available.</p>
                         {% endfor %}
+
+                        {% for quiz_info in quizzes %}
+                        {% if quiz_info.quiz and quiz_info.quiz.chapter_id == chapter %}
+                        {% if quiz_info.status == 'incomplete' %}
+                        <li class="material-item">
+                            <span>{{ quiz_info.quiz.title }}</span>
+                            <a href="{% url 'take_quiz' quiz_id=quiz_info.quiz.id %}">
+                                <button type="button" class="btn btn-danger">Quiz</button>
+                            </a>
+                        </li>
+                        {% elif quiz_info.status == 'completed' %}
+                        <li class="material-item">
+                            <span>{{ quiz_info.quiz.title }}</span>
+                            <button class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#uploadModal{{ order.id }}">
+                                Score
+                            </button>
+                        </li>
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="uploadModal{{ order.id }}" tabindex="-1"
+                            aria-labelledby="uploadModalLabel{{ order.id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="uploadModalLabel{{ order.id }}">Score Quiz</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-content bg-white d-flex justify-content-center align-item-center">
+                                        <h6>Score anda : {{quiz_info.score}}</h6>
+                                        <a href="{% url 'generate_certificate' certificate_id=quiz_info.certificate.id %}"
+                                            type="button" class="btn btn-success">Download Certificate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+
                     </ul>
                 </div>
                 {% empty %}
@@ -55,6 +100,8 @@
             </div>
         </div>
     </main>
+
+
 
     <style>
         .content-container {
@@ -172,11 +219,6 @@
             document.getElementById('videoPlayer').src = videoUrl;
             document.getElementById('material-detail').textContent = materialDetail;
             console.log(videoUrl, materialDetail)
-        }
-
-        function goToQuiz(event) {
-            event.stopPropagation();
-            window.location.href = "{% url 'quiz' %}";
         }
 
     </script>

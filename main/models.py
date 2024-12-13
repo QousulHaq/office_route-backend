@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 # Create your models here.
 class Mentor(models.Model):
@@ -104,6 +105,7 @@ class UserQuiz(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="attempts")
     score = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     completed_at = models.DateTimeField(null=True, blank=True)
+    is_completed = models.BooleanField(default=False)  # Pastikan flag penyelesaian kuis
 
 # 8. Certificate Model
 class Certificate(models.Model):
@@ -114,3 +116,29 @@ class Certificate(models.Model):
 
     class Meta:
         unique_together = ('user', 'course_id')
+
+class Cart(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="cart")
+    courses = models.ManyToManyField('Course', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
+    courses = models.ManyToManyField('Course')
+    total_price = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=50, choices=[
+        ('Pending', 'Pending'),
+        ('Waiting Verification', 'Waiting Verification'),
+        ('Paid', 'Paid'),
+        ('Failed', 'Failed'),
+    ], default='Pending')
+    payment_method = models.CharField(max_length=50, null=True, blank=True)
+    payment_proof = models.FileField(upload_to='payment_proofs/', null=True, blank=True)
+
+class Payment(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name="payment")
+    payment_method = models.CharField(max_length=50, choices=[('Bank Transfer', 'Bank Transfer'), ('E-Wallet', 'E-Wallet'), ('Credit Card', 'Credit Card')])
+    payment_proof = models.ImageField(upload_to='payment_proofs/', blank=True, null=True)
+    uploaded_at = models.DateTimeField(default=now)
+    verified = models.BooleanField(default=False)

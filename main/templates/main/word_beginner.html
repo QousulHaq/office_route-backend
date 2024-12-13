@@ -3,6 +3,7 @@
 
 <head>
     {% load static %}
+    {% load app_filters %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ms Word Course Beginner</title>
@@ -15,23 +16,39 @@
 
 <body>
     {% include 'includes/navbar.html' %}
-
+    
+    
     <!-- Main -->
     <main class="container mt-5">
         <div class="row">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-success {{message.tags}}" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            </ul>         
+            {% endif %}
             <!-- kursus -->
             <div class="col-lg-8">
                 <div class="card p-4 shadow">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h1 class="course-title">Belajar Microsoft Office Word (Beginner)</h1>
+                            <h1 class="course-title">{{ course.title }}</h1>
                             <p>
-                                <strong>Course time:</strong> 4h 30m <br>
-                                <strong>Category:</strong> Ms. Office Course <br>
-                                <strong>Rate:</strong> ⭐⭐⭐⭐⭐ 5.0
+                                <strong>Course time:</strong> {{course.total_duration}} Menit<br>
+                                <strong>Category:</strong> {{course.category}}<br>
+                                <strong>Rate:</strong> <span class="stars text-warning">{{course.rating|star_rating}}</span>  {{course.rating}}
                             </p>
                         </div>
+                        {% if course.category == 'Word' %}
                         <img src="{% static 'main/images/ms-word.png' %}" alt="Word Logo" width="100">
+                        {% elif course.category == 'Excel' %}
+                        <img src="{% static 'main/images/ms-excel.png' %}" alt="Word Logo" width="100">
+                        {% else %}
+                        <img src="{% static 'main/images/ms-ppt.png' %}" alt="Word Logo" width="100">
+                        {% endif %}
                     </div>
                     <hr>
                     <p class="fw-bold">Dapatkan:</p>
@@ -41,20 +58,20 @@
                         <span class="badge bg-info">Modul</span>
                     </div>
                     <h4>Deskripsi</h4>
-                    <p>
+                    <p>{{ course.description }}</p>
+                    <!-- <p>
                         Kursus Ms. Word Beginner ini dirancang untuk pemula yang ingin
                         menguasai dasar-dasar penggunaan Microsoft Word. Anda akan belajar cara
                         membuat dan mengedit dokumen sederhana, menggunakan fitur dasar seperti
                         pemformatan teks, penyisipan gambar, dan pengaturan tata letak. Kursus ini
                         akan memberikan fondasi yang kuat untuk membuat dokumen yang rapi dan
                         profesional, mulai dari surat hingga laporan singkat.
-                    </p>
+                    </p> -->
                     <div class="d-flex justify-content-between align-items-center mt-4">
-                        <p class="mb-0" style="font-size: 1.5rem; font-weight: bold;">Rp 599.000</p>
-                        <a href="#" class="btn btn-primary btn-lg px-4 py-2" style="font-size: 1.1rem;">
+                        <p class="mb-0" style="font-size: 1.5rem; font-weight: bold;">Rp. {{course.price|currency_format }}</p>
+                        <a href="{% url 'add_to_cart' course.id %}" class="btn btn-custom btn-lg px-4 py-2" style="font-size: 1.1rem;">
                             <i class="bi bi-cart"></i>
-                        </a>
-                        <a href="#" class="btn btn-custom btn-lg px-4 py-2" style="font-size: 1.1rem;">
+                            &nbsp;
                             Beli Course
                         </a>
                     </div>
@@ -64,20 +81,20 @@
             <div class="mentor-section">
                 <h3 class="mentor-title">Mentor</h3>
                 <div class="mentor-card">
-                    <img src="{% static 'main/images/mentor_word.png' %}" alt="Foto Mentor" class="mentor-image" />
+                    <img src="{{mentor.mentor_profile.url}}" alt="Foto Mentor" class="mentor-image" />
                     <div class="mentor-info">
-                        <h5 class="mentor-name">Arif Nugraha, S.Kom., M.T.I.</h5>
+                        <h5 class="mentor-name">{{ mentor.name }}</h5>
                         <!-- <p><strong>Pendidikan:</strong></p>
             <ul class="mentor-details">
               <li>S1 Sistem Informasi</li>
               <li>S2 Magister Komputer</li>
             </ul> -->
-                        <p><strong>Pengalaman mengajar:</strong> 4 Tahun di bidang teknologi dan pengolahan dokumen</p>
+                        <p><strong>Pengalaman mengajar:</strong> &nbsp; {{mentor.experience}}</p>
                         <p><strong>Keahlian:</strong></p>
                         <ul class="mentor-details">
-                            <li>Pelatihan Microsoft Word tingkat dasar hingga lanjutan</li>
-                            <li>Pengaturan tata letak, pengeditan, dan pembuatan template dokumen</li>
-                            <li>Penulisan dan format dokumen profesional</li>
+                            {% for skill in mentor.skills %}
+                            <li>{{skill}}</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -96,76 +113,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for chapter in chapters %}
                         <tr>
                             <td>
-                                Introduction to Microsoft Word
+                                {{ chapter.title }}
                                 <ul>
-                                    <li>Mengenal antarmuka Microsoft Word</li>
-                                    <li>Membuat, membuka, dan menyimpan dokumen</li>
+                                    {% for material in chapter.materials.all %}
+                                    <li>{{ material.title }}</li>
+                                    {% endfor %}
                                 </ul>
                             </td>
-                            <td>30 Menit</td>
-                            <td>Video</td>
+                            <td>{{ chapter.duration }} Menit</td>
+                            <td>Video, Materi, Quiz</td>
                         </tr>
-                        <tr>
-                            <td>
-                                Basic Text Editing and Formatting
-                                <ul>
-                                    <li>Mengetik dan mengedit teks dasar</li>
-                                    <li>Mengatur jenis, ukuran, dan warna font</li>
-                                    <li>Menggunakan fitur tebal, miring, dan garis bawah</li>
-                                </ul>
-                            </td>
-                            <td>1 Jam</td>
-                            <td>Video, Latihan, Kuis</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Paragraph Formatting
-                                <ul>
-                                    <li>Mengatur alignment teks (kiri, kanan, rata tengah)</li>
-                                    <li>Mengatur spasi baris dan paragraf</li>
-                                    <li>Membuat daftar bernomor dan berpin (bullets)</li>
-                                </ul>
-                            </td>
-                            <td>1 Jam</td>
-                            <td>Video, Latihan</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Working with Pages
-                                <ul>
-                                    <li>Menambah dan menghapus halaman</li>
-                                    <li>Mengatur margin, ukuran kertas, dan orientasi</li>
-                                </ul>
-                            </td>
-                            <td>30 Menit</td>
-                            <td>Video, Latihan, Kuis</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Inserting Basic Elements
-                                <ul>
-                                    <li>Menyisipkan gambar dan mengatur posisi gambar</li>
-                                    <li>Menambahkan tabel sederhana</li>
-                                    <li>Menambahkan header, footer, dan nomor halaman</li>
-                                </ul>
-                            </td>
-                            <td>1 Jam</td>
-                            <td>Video, Latihan, Kuis</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Proofing and Saving Documents
-                                <ul>
-                                    <li>Menggunakan fitur spelling dan grammar check</li>
-                                    <li>Menyimpan dokumen dalam format berbeda (Word, PDF)</li>
-                                    <li>Menyimpan dan berbagi dokumen</li>
-                                </ul>
-                            </td>
-                            <td>30 Menit</td>
-                            <td>Video, Latihan</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -179,6 +140,17 @@
 
     <!-- Footer section -->
     {% include 'includes/footer.html' %}
+
+    <script>
+        // Fungsi untuk menghilangkan pesan setelah 3 detik
+        setTimeout(function() {
+            const messages = document.querySelector('.messages');
+            if (messages) {
+                messages.style.display = 'none'; // Sembunyikan elemen pesan
+            }
+        }, 2000);  // 3000 ms = 3 detik
+    </script>
+    
 
     <!-- jQuery minified -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
