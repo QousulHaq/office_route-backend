@@ -115,16 +115,49 @@ def all_course(request):
         
         return render(request, 'main/all_course.html', context={"course": course_data})
 
+# def all_course_detail(request, course_id):
+#     course = get_object_or_404(Course, id=course_id)
+#     chapters = course.chapters.all().order_by('order')  # Mengambil chapter berdasarkan urutan
+#     mentor = course.mentor  # Mengambil mentor dari course
+
+#     try:
+#         cart = Cart.objects.get(user=request.user)
+#         total_price = sum(course.price for course in cart.courses.all())
+#     except Cart.DoesNotExist:
+#         cart = None
+#         total_price = 0
+
+#     context = {
+#         'course': course,
+#         'chapters': chapters,
+#         'mentor': mentor,
+#         'cart': cart, 
+#         'total_price': total_price
+#     }
+#     return render(request, 'main/word_beginner.html', context)
 
 def all_course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
-    chapters = course.chapters.all().order_by('order')  # Mengambil chapter berdasarkan urutan
-    mentor = course.mentor  # Mengambil mentor dari course
+    chapters = course.chapters.all().order_by('order')  # Get chapters ordered by 'order'
+    mentor = course.mentor  # Get mentor associated with the course
+
+    cart = None
+    total_price = 0
+
+    if request.user.is_authenticated:
+        try:
+            cart = Cart.objects.get(user=request.user)
+            total_price = sum(course.price for course in cart.courses.all())
+        except Cart.DoesNotExist:
+            cart = None
+            total_price = 0
 
     context = {
         'course': course,
         'chapters': chapters,
         'mentor': mentor,
+        'cart': cart, 
+        'total_price': total_price,
     }
     return render(request, 'main/word_beginner.html', context)
 
@@ -132,7 +165,14 @@ def my_course(request):
     user_classes = UserClass.objects.filter(user=request.user).select_related('course_id')
     courses = [user_class.course_id for user_class in user_classes]
 
-    return render(request, 'main/my_course.html', context={"course" : courses})
+    try:
+        cart = Cart.objects.get(user=request.user)
+        total_price = sum(course.price for course in cart.courses.all())
+    except Cart.DoesNotExist:
+        cart = None
+        total_price = 0
+
+    return render(request, 'main/my_course.html', context={"course" : courses, 'cart': cart, 'total_price': total_price})
 
 # def my_course_detail(request, course_id):
 #     course = get_object_or_404(Course, id=course_id)

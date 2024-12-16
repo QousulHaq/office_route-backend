@@ -36,7 +36,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/about/' %}active{% endif %}"
+                        <a class="nav-link {% if request.path == '/payment/history/' %}active{% endif %}"
                             href="{% url 'payment_history' %}">Payment History</a>
                     </li>
                     {% endif %}
